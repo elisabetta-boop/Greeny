@@ -29,10 +29,10 @@ public class PlayerController : MonoBehaviour
     private float animationSmoothTime = 0.1f;
     [SerializeField]
     private float animationPlayerTransition = 0.15f;
-    // [SerializeField]
-    // private Transform aimTarget;
-    // [SerializeField]
-    // private float aimDistance = 1f;
+    [SerializeField]
+    private Transform aimTarget;
+    [SerializeField]
+    private float aimDistance = 1f;
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-    
+        aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
 
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)

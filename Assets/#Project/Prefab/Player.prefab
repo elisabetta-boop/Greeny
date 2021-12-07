@@ -387,6 +387,8 @@ MonoBehaviour:
   bulletHitMissDistance: 25
   animationSmoothTime: 0.1
   animationPlayerTransition: 0.15
+  aimTarget: {fileID: 3801890366089673237}
+  aimDistance: 10
   shootLayer:
     serializedVersion: 2
     m_Bits: 119
@@ -949,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c430f382484144e925c097c2d33cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0.633
+  m_Weight: 0.6
   m_Data:
     m_ConstrainedObject: {fileID: 5730471457355052799}
     m_SourceObjects:
@@ -1770,13 +1772,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6208272129300704809}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.27787778, z: 1.0123485}
+  m_LocalRotation: {x: -0.7065123, y: 0.028991718, z: 0.028991716, w: 0.70651215}
+  m_LocalPosition: {x: 0.10964966, y: 0.27787876, z: 1.0078526}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1745314838533581008}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 4.7}
 --- !u!33 &5364273758118746204
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a952bbffba8ca48be730546f2520b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 157808263449216648, guid: 4be74b93b5af74a4491fe3a6f932495c, type: 3}
+  playerInput: {fileID: 157808263449216648, guid: 7aae6662f733b0048b79e5e0f55b4f37, type: 3}
   priorityBoostAmount: 10
   thirdPersonCanvas: {fileID: 0}
   aimCanvas: {fileID: 536515557474325199}
@@ -357,9 +357,9 @@ MonoBehaviour:
   m_YDamping: 0.2
   m_ZDamping: 1
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.144
-  m_ScreenY: 0.155
-  m_CameraDistance: 3.22
+  m_ScreenX: 0.169
+  m_ScreenY: 1.124
+  m_CameraDistance: 3.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

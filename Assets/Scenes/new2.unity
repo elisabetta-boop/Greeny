@@ -277,41 +277,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1642195713, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_Name
-      value: HealthSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 1642195714, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_Value
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989055726, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989055726, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1638156751017756613, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_BiasY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1638156751017756613, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_ScreenY
-      value: 0.481
-      objectReference: {fileID: 0}
-    - target: {fileID: 1638156751017756613, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_CameraDistance
-      value: 4.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931137011802678085, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931137011802678085, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
-      propertyPath: m_LookAt
-      value: 
+    - target: {fileID: 3435733609476921386, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9164101348832611610, guid: e436bb52ea3a54a4ba29ac3f93638294, type: 3}
       propertyPath: m_RootOrder
@@ -477,10 +445,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 536515557718700981, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 157808263449216648, guid: 7aae6662f733b0048b79e5e0f55b4f37, type: 3}
     - target: {fileID: 536515557718700981, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
       propertyPath: thirdPersonCanvas
       value: 
