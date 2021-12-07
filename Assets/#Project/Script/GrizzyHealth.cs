@@ -12,6 +12,7 @@ public class GrizzyHealth : MonoBehaviour
     public GameObject healthBarUI;
     public Pool pool;
     public Grizzy grizzy;
+    public bool isDead=false;
     
 
     void Start()
@@ -48,6 +49,7 @@ public class GrizzyHealth : MonoBehaviour
     }
     private void Die()
     {
+        isDead = true;
         Debug.Log("Death!! daiiiii");
         print((pool == null) + " pool");
         print((grizzy == null) + " grizzy");
