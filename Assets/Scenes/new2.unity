@@ -449,6 +449,18 @@ PrefabInstance:
       propertyPath: thirdPersonCanvas
       value: 
       objectReference: {fileID: 1708078346}
+    - target: {fileID: 2141819816610598999, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141819816610598999, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
+      propertyPath: m_ScreenY
+      value: 1.239
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141819816610598999, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
+      propertyPath: m_CameraDistance
+      value: 3.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
 --- !u!1 &1406086396
