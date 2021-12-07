@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     
 
     private Animator animator;
-    // int RecoilAnimation;
+    int RecoilAnimation;
     int jumpAnimation;
     int moveXAnimationParameterId;
     int moveZAnimationParameterId;
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         jumpAnimation = Animator.StringToHash("Pistol Jump");
-        // RecoilAnimation = Animator.StringToHash("PistolShootRecoil");
+        RecoilAnimation = Animator.StringToHash("Pistol Recoil");
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
         animator.SetFloat(moveXAnimationParameterId, 0f);
@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
             bulletController.target = cameraTransform.position + cameraTransform.forward*bulletHitMissDistance;
             bulletController.hit = false;
         }
+        animator.CrossFade(RecoilAnimation, animationPlayerTransition);
     }
     private void MegaShootGun()
     {

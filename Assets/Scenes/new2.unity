@@ -451,11 +451,11 @@ PrefabInstance:
       objectReference: {fileID: 1708078346}
     - target: {fileID: 2141819816610598999, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
       propertyPath: m_ScreenX
-      value: 0.228
+      value: 0.059
       objectReference: {fileID: 0}
     - target: {fileID: 2141819816610598999, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
       propertyPath: m_ScreenY
-      value: 1.239
+      value: 1.298
       objectReference: {fileID: 0}
     - target: {fileID: 2141819816610598999, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
       propertyPath: m_CameraDistance
