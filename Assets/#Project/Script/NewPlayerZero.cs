@@ -21,13 +21,17 @@ public class NewPlayerZero : MonoBehaviour
     private Transform cameraTransform;
     private InputAction moveAction;
     // private InputAction lookAction;
+    public Camera playerCam;
     
     private void Awake()
     {
         
+       playerCam= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
-        cameraTransform = Camera.main.transform;
+        // cameraTransform = Camera.main.transform;
+        cameraTransform = playerCam.transform;
         moveAction = playerInput.actions["Move"];
 
         //Cursor.lockState = CursorLockMode.Locked;
