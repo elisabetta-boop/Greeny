@@ -7,6 +7,7 @@ public class MenuGame_Manager : MonoBehaviour
     public static MenuGame_Manager instance = null;
 
     public GameObject PlayerPrefabZero;
+    public GameObject GreenPlayerPrefabZero;
     public GameObject playerZero;
     public Vector3 StartPos;
     
@@ -17,6 +18,8 @@ public class MenuGame_Manager : MonoBehaviour
     public bool counting = false;
     public bool theSceneIsStarted = false;
     public TelevisionController televisionController;
+    public NewPlayerZeroTransformation newPlayerZeroTransformation;
+    
     
 
     void Start()
@@ -51,7 +54,17 @@ public class MenuGame_Manager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+        newPlayerZeroTransformation = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZeroTransformation>();
+        if(newPlayerZeroTransformation== null)
+        {
+            Debug.Log("newPlayerZeroTransformation null"+newPlayerZeroTransformation);
+        }
+        else
+        {
+            Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
         }    
+        
     }
     public void ResetPos()
     {
@@ -64,7 +77,21 @@ public class MenuGame_Manager : MonoBehaviour
     
     void Update()
     {
+        //if(newPlayerZeroTransformation.isTransforming)
+        // {
+        //     Debug.Log("is transforming in menuGame manager "+newPlayerZeroTransformation.isTransforming);
+        //     Destroy(playerZero.gameObject);
+        //     ChangeGreeny();
+        // }
+    }
 
+    public void ChangeGreeny()
+    {
+        playerZero.GetComponent<CharacterController>().enabled = false;
+        instance= this;
+        playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
+        playerZero.GetComponent<CharacterController>().enabled = true;
+        Debug.Log("change greeny");
     }
 
 }

@@ -1682,7 +1682,7 @@ GameObject:
   - component: {fileID: 1707510626}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1699,13 +1699,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af60445cb54d78c4b89abc9c40a88a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefabZero: {fileID: 157808263449216662, guid: b6abb7f54c122a143beb6fb3ef409993, type: 3}
+  PlayerPrefabZero: {fileID: 157808263449216662, guid: 059d09c26592a7845aa7deb931f156ba, type: 3}
+  GreenPlayerPrefabZero: {fileID: 157808263449216662, guid: b9e3488869e587944af4cccb4038f39b, type: 3}
   playerZero: {fileID: 0}
   StartPos: {x: 2, y: 12, z: 7}
   levelNow: 0
   counting: 0
   theSceneIsStarted: 0
   televisionController: {fileID: 1446976039}
+  newPlayerZeroTransformation: {fileID: 8730847660460158932, guid: 059d09c26592a7845aa7deb931f156ba, type: 3}
 --- !u!4 &1707510627
 Transform:
   m_ObjectHideFlags: 0
