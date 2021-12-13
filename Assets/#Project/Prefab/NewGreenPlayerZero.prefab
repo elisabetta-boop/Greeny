@@ -140,6 +140,12 @@ MonoBehaviour:
   gravityValue: -9.81
   rotationSpeed: 5
   controller: {fileID: 157808263449216651}
+  animationSmoothTime: 0.1
+  animationPlayerTransition: 0.15
+  playerCam: {fileID: 0}
+  animator: {fileID: 5524541119843658635}
+  animationVelocity: {x: 0, y: 0}
+  victoryAnimation: 5
 --- !u!1 &295221588800443509
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +431,7 @@ Animator:
   m_GameObject: {fileID: 1225226045517228875}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 19420e406228038468b6800f9feca2b0, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: abff023b49474964ba32f78e6d441f52, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

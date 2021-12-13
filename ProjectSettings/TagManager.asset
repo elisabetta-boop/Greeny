@@ -18,6 +18,7 @@ TagManager:
   - TelevisionCamera
   - Television
   - MenuGame
+  - Door
   layers:
   - Default
   - TransparentFX

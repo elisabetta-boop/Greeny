@@ -15,6 +15,10 @@ public class NewPlayerZero : MonoBehaviour
     private float rotationSpeed = 5f;
     [SerializeField]
     private CharacterController controller;
+    [SerializeField]
+    private float animationSmoothTime = 0.1f;
+    [SerializeField]
+    public float animationPlayerTransition = 0.15f;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -22,11 +26,18 @@ public class NewPlayerZero : MonoBehaviour
     private InputAction moveAction;
     // private InputAction lookAction;
     public Camera playerCam;
+    public Animator animator;
+    int moveXAnimationParameterId;
+    int moveZAnimationParameterId;
+    Vector2 currentAnimationBlendVector;
+    public Vector2 animationVelocity;
+    public int victoryAnimation;
+    //public Door door;
     
     private void Awake()
     {
-        
-       playerCam= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+        //door = GameObject.FindGameObjectWithTag("Door").GetComponent<Door>();
+        playerCam= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
 
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -35,7 +46,11 @@ public class NewPlayerZero : MonoBehaviour
         moveAction = playerInput.actions["Move"];
 
         //Cursor.lockState = CursorLockMode.Locked;
-       
+        animator = GetComponentInChildren<Animator>();
+        victoryAnimation = Animator.StringToHash("Victory");
+        moveXAnimationParameterId = Animator.StringToHash("MoveX");
+        moveZAnimationParameterId = Animator.StringToHash("MoveZ");
+        animator.SetFloat(moveXAnimationParameterId, 0f);
     }
     
 
@@ -48,14 +63,17 @@ public class NewPlayerZero : MonoBehaviour
         }
 
         Vector2 input = moveAction.ReadValue<Vector2>();
-        //currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector, input, ref animationVelocity,animationSmoothTime);
+        currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector, input, ref animationVelocity,animationSmoothTime);
 
 
-       // Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
-        Vector3 move = new Vector3(input.x, 0, input.y);
+        Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
+        //Vector3 move = new Vector3(input.x, 0, input.y);
         move = move.x * cameraTransform.right.normalized + move.z *cameraTransform.forward.normalized;
         move.y =0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
+        
+        animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
+        animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
 
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -64,5 +82,10 @@ public class NewPlayerZero : MonoBehaviour
         //rotation
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y,0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        // if(door.doorIsOpen)
+        // {
+        //     animator.CrossFade(victoryAnimation, animationPlayerTransition);
+        // }
     }
 }

@@ -1110,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 536515557718700981, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
       propertyPath: playerInput
       value: 
-      objectReference: {fileID: 157808263449216648, guid: 4be74b93b5af74a4491fe3a6f932495c, type: 3}
+      objectReference: {fileID: 157808263449216648, guid: 7aae6662f733b0048b79e5e0f55b4f37, type: 3}
     - target: {fileID: 536515557718700981, guid: 673f7a3e8f1eaf748b71d58dead68da3, type: 3}
       propertyPath: thirdPersonCanvas
       value: 

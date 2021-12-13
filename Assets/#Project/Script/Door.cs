@@ -12,9 +12,12 @@ public class Door : MonoBehaviour
 
     public UnityEvent whenEnter;
 
+    public NewPlayerZero playerZero;
+
     private void Start() {
     
         animator= GetComponent<Animator>(); 
+        playerZero = GameObject.FindGameObjectWithTag("PlayerZero").GetComponentInChildren<NewPlayerZero>();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -26,5 +29,6 @@ public class Door : MonoBehaviour
     public void Unlock() {
         doorIsOpen = true;
         animator.SetBool("doorIsOpen", true);
+        playerZero.animator.CrossFade(playerZero.victoryAnimation, playerZero.animationPlayerTransition);
     }
 }
