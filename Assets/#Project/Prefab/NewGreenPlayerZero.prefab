@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 157808263449216648}
   - component: {fileID: -7502331076437540842}
   - component: {fileID: 555050073115208213}
-  - component: {fileID: -8777901741119876207}
   m_Layer: 7
   m_Name: NewGreenPlayerZero
   m_TagString: PlayerZero
@@ -141,24 +140,6 @@ MonoBehaviour:
   gravityValue: -9.81
   rotationSpeed: 5
   controller: {fileID: 157808263449216651}
---- !u!114 &-8777901741119876207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157808263449216662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c972226ca170fa14e885cec00de68292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTransforming: 0
-  waitTransformation: 31
-  PlayerZeroGreeny: {fileID: 157808263449216662}
-  zeroPlayerTransform: {fileID: 157808263449216655, guid: 059d09c26592a7845aa7deb931f156ba, type: 3}
-  menuGame_Manager: {fileID: 0}
-  lastPositionGreenyGrizzy: {x: 0, y: 0, z: 0}
 --- !u!1 &295221588800443509
 GameObject:
   m_ObjectHideFlags: 0

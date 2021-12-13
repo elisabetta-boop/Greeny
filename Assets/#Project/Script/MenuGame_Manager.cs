@@ -5,9 +5,9 @@ using UnityEngine;
 public class MenuGame_Manager : MonoBehaviour
 {
     public static MenuGame_Manager instance = null;
-
-    public GameObject PlayerPrefabZero;
-    public GameObject GreenPlayerPrefabZero;
+    public GameObject[] PlayerPrefabZero;
+    // public GameObject PlayerPrefabZero;
+    // public GameObject GreenPlayerPrefabZero;
     public GameObject playerZero;
     public Vector3 StartPos;
     
@@ -28,7 +28,7 @@ public class MenuGame_Manager : MonoBehaviour
         {
             //DontDestroyOnLoad(gameObject);
             instance= this;
-            playerZero = Instantiate(PlayerPrefabZero,StartPos,Quaternion.identity);
+            playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
             //DontDestroyOnLoad(playerZero);
             //Debug.Log("level zero");
             televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -37,7 +37,7 @@ public class MenuGame_Manager : MonoBehaviour
         {
             //DontDestroyOnLoad(gameObject);
             instance= this;
-            playerZero = Instantiate(PlayerPrefabZero,StartPos,Quaternion.identity);
+            playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
             //DontDestroyOnLoad(playerZero);
             //Debug.Log("level zero");
             // televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -46,7 +46,7 @@ public class MenuGame_Manager : MonoBehaviour
         {
             //DontDestroyOnLoad(gameObject);
             instance= this;
-            playerZero = Instantiate(PlayerPrefabZero,StartPos,Quaternion.identity);
+            playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
             //DontDestroyOnLoad(playerZero);
             //Debug.Log("level zero");
             // televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -87,10 +87,12 @@ public class MenuGame_Manager : MonoBehaviour
 
     public void ChangeGreeny()
     {
-        playerZero.GetComponent<CharacterController>().enabled = false;
+        
+        // instance = this;
+        // playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity) as GameObject;
         instance= this;
-        playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
-        playerZero.GetComponent<CharacterController>().enabled = true;
+        playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
+        
         Debug.Log("change greeny");
     }
 
