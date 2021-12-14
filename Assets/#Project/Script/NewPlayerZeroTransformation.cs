@@ -54,11 +54,20 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         if (isTransforming) //qui condizione trigger
         {
             //greenyZeroMaterial.color = Color.green;
-            greenyZeroMaterial = greenTransformationMaterial;
-            print("color transformation in greeny"+ greenyZeroMaterial);
+            // greenyZeroMaterial = greenTransformationMaterial;
+            // print("color transformation in greeny"+ greenyZeroMaterial);
             // lastPosition = gameObject.transform.position;
             // ChangeGreeny();
             //Destroy(gameObject);
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            foreach (Renderer renderer in renderers)
+            {
+                // To preserve transparency
+                float alpha = renderer.material.color.a;
+                renderer.material.color = new Color(0, 1, 0, alpha);
+                // Don't change the color all the time
+                isTransforming = false;
+            }
          }
 
         // else

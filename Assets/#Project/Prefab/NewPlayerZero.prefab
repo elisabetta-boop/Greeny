@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 8412250891401734991}
   m_Layer: 0
   m_Name: M. Punch gelatina
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 6204661732915433829}
   m_Layer: 0
   m_Name: mixamorig:Hips
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 4166882230274934145}
   m_Layer: 0
   m_Name: huesos
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
