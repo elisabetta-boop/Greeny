@@ -85,15 +85,15 @@ public class MenuGame_Manager : MonoBehaviour
         // }
     }
 
-    public void ChangeGreeny()
-    {
+    // public void ChangeGreeny()
+    // {
         
-        // instance = this;
-        // playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity) as GameObject;
-        instance= this;
-        playerZero = Instantiate(PlayerPrefabZero[1],newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
+    //     // instance = this;
+    //     // playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity) as GameObject;
+    //     // instance= this;
+    //     // playerZero = Instantiate(PlayerPrefabZero[1],newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
         
-        Debug.Log("change greeny");
-    }
+    //     Debug.Log("change greeny");
+    // }
 
 }

@@ -22,7 +22,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
 
     void Start()
     {
-        menuGame_Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<MenuGame_Manager>();
+        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
         if(menuGame_Manager== null)
         {
             Debug.Log("menu game manager null");
@@ -68,9 +68,18 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         // }
         if (isTransforming)
         {
-            lastPositionGreenyGrizzy = gameObject.transform.position;
-            Destroy(gameObject);
-            menuGame_Manager.ChangeGreeny();
+            // lastPositionGreenyGrizzy = gameObject.transform.position;
+            // Destroy(gameObject);
+            // menuGame_Manager.ChangeGreeny();
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            foreach (Renderer renderer in renderers)
+            {
+                // To preserve transparency
+                float alpha = renderer.material.color.a;
+                renderer.material.color = new Color(0, 1, 0, alpha);
+                // Don't change the color all the time
+                isTransforming = false;
+            }
         }
     }
     // public void ZeroTrasform()

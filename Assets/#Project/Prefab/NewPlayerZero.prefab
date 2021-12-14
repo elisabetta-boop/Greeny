@@ -147,6 +147,7 @@ MonoBehaviour:
   animator: {fileID: 5524541119843658635}
   animationVelocity: {x: 0, y: 0}
   victoryAnimation: 0
+  menuGame_Manager: {fileID: 0}
 --- !u!114 &8730847660460158932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTransforming: 0
-  waitTransformation: 31
+  waitTransformation: 37
   PlayerZeroGreeny: {fileID: 157808263449216662, guid: b9e3488869e587944af4cccb4038f39b, type: 3}
   zeroPlayerTransform: {fileID: 157808263449216655}
   menuGame_Manager: {fileID: 0}

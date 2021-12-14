@@ -33,9 +33,19 @@ public class NewPlayerZero : MonoBehaviour
     public Vector2 animationVelocity;
     public int victoryAnimation;
     //public Door door;
+    public MenuGame_Manager menuGame_Manager;
     
     private void Awake()
     {
+        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
+        animator = GetComponentInChildren<Animator>();
+        if(animator == null)
+        {
+            Debug.Log("animator null");
+        }
+        else{
+            Debug.Log("animator ok");
+        }
         //door = GameObject.FindGameObjectWithTag("Door").GetComponent<Door>();
         playerCam= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
 
@@ -86,6 +96,20 @@ public class NewPlayerZero : MonoBehaviour
         // if(door.doorIsOpen)
         // {
         //     animator.CrossFade(victoryAnimation, animationPlayerTransition);
+        // }
+    }
+    public void MiaoVictoryAnimation()
+    {
+        Debug.Log(animator.gameObject.activeSelf + " active self?");
+        //animator.CrossFade(victoryAnimation, animationPlayerTransition);
+        animator.SetBool("miaoVictory", true);
+        Debug.Log("animator ok.... normally inside miaoVictoryAnimation");
+        // if(gameObject.name == "PlayerZeroName")
+        // {
+            
+        // }
+        // else{
+        //     Debug.Log("No animation in miaovictoryanimation");
         // }
     }
 }
