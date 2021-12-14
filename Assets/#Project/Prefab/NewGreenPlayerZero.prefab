@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 157808263449216648}
   - component: {fileID: -7502331076437540842}
   - component: {fileID: 555050073115208213}
+  - component: {fileID: 6845343011351879165}
   m_Layer: 7
   m_Name: NewGreenPlayerZero
   m_TagString: PlayerZero
@@ -146,6 +147,22 @@ MonoBehaviour:
   animator: {fileID: 5524541119843658635}
   animationVelocity: {x: 0, y: 0}
   victoryAnimation: 5
+  menuGame_Manager: {fileID: 0}
+--- !u!114 &6845343011351879165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157808263449216662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed66a8477b841144ca0c09e1f994fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  power: 0
+  explosionGameObject: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
 --- !u!1 &295221588800443509
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +237,7 @@ GameObject:
   - component: {fileID: 8412250891401734991}
   m_Layer: 0
   m_Name: M. Punch gelatina
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,7 +416,7 @@ GameObject:
   - component: {fileID: 5524541119843658635}
   m_Layer: 0
   m_Name: Victory
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -451,7 +468,7 @@ GameObject:
   - component: {fileID: 6204661732915433829}
   m_Layer: 0
   m_Name: mixamorig:Hips
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -608,7 +625,7 @@ GameObject:
   - component: {fileID: 4166882230274934145}
   m_Layer: 0
   m_Name: huesos
-  m_TagString: PlayerZero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

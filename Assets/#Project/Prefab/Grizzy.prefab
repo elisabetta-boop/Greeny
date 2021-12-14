@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 9154690644326729455}
   - component: {fileID: 470071047931013578}
   - component: {fileID: 9049810325655535585}
+  - component: {fileID: -6240623858418325935}
   m_Layer: 0
   m_Name: Grizzy
   m_TagString: Grizzy
@@ -315,6 +316,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 0}
   playerManager: {fileID: 0}
+--- !u!114 &-6240623858418325935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881975299241203757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed66a8477b841144ca0c09e1f994fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  power: 0
+  explosionGameObject: {fileID: 0}
 --- !u!1 &1045527107070403094
 GameObject:
   m_ObjectHideFlags: 0

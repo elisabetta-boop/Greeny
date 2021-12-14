@@ -17,6 +17,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     private Vector3 lastPosition;
     public MenuGame_Manager menuGame_Manager;
     public Vector3 lastPositionGreenyGrizzy;
+    public Explosion explosion;
     
     
 
@@ -30,6 +31,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         else{
             Debug.Log("menu game manager ok");
         }
+        explosion = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<Explosion>();
         // greenyZeroMaterial = GetComponentInChildren <Renderer>().material;
         // if(greenyZeroMaterial== null)
         // {
@@ -103,6 +105,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTransformation);
         isTransforming=true;
+        explosion.Explode();
     }
     // public void ChangeGreeny()
     // {
