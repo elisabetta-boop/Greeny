@@ -47,6 +47,14 @@ public class NewPlayerZero : MonoBehaviour
 
         //Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponentInChildren<Animator>();
+        if(animator == null)
+        {
+            Debug.Log("animator null");
+        }
+        else{
+            Debug.Log("animator ok");
+        }
+
         victoryAnimation = Animator.StringToHash("Victory");
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
@@ -86,6 +94,16 @@ public class NewPlayerZero : MonoBehaviour
         // if(door.doorIsOpen)
         // {
         //     animator.CrossFade(victoryAnimation, animationPlayerTransition);
+        //     Debug.Log("animator ok.... normally inside miaoVictoryAnimation");
         // }
+    }
+
+    public void MiaoVictoryAnimation()
+    {
+        Debug.Log(animator.gameObject.activeSelf + " active self?");
+        
+        //animator.CrossFade(victoryAnimation, animationPlayerTransition);
+        animator.SetBool("miaoVictory", true);
+        Debug.Log("animator ok.... normally inside miaoVictoryAnimation");
     }
 }
