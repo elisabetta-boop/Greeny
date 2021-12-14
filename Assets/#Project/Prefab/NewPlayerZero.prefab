@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTransforming: 0
   waitTransformation: 31
+  greenTransformationMaterial: {fileID: 2100000, guid: cb976b714fe776b45a83de21b85e2811, type: 2}
   PlayerZeroGreeny: {fileID: 157808263449216662, guid: b9e3488869e587944af4cccb4038f39b, type: 3}
   zeroPlayerTransform: {fileID: 157808263449216655}
   menuGame_Manager: {fileID: 0}

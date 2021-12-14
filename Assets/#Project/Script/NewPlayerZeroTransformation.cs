@@ -5,11 +5,11 @@ using UnityEngine;
 public class NewPlayerZeroTransformation : MonoBehaviour
 {
     Material greenyZeroMaterial;
-    // public Material greenyGreen;
+    //public Material greenyGreen;
     public bool isTransforming = false;
     private Television television;
     public float waitTransformation = 31;
-    //public Material greenTransformationMaterial;
+    public Material greenTransformationMaterial;
     public GameObject PlayerZeroGreeny;
 
     private GameObject playerZeroGreen;
@@ -30,15 +30,15 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         else{
             Debug.Log("menu game manager ok");
         }
-        // greenyZeroMaterial = GetComponentInChildren <Renderer>().material;
-        // if(greenyZeroMaterial== null)
-        // {
-        //     Debug.Log("greeny material null");
+        greenyZeroMaterial = GetComponentInChildren <Renderer>().material;
+        if(greenyZeroMaterial== null)
+        {
+            Debug.Log("greeny material null");
 
-        // }
-        // else{
-        //     Debug.Log("greeny material ok"+greenyZeroMaterial);
-        // }
+        }
+        else{
+            Debug.Log("greeny material ok"+greenyZeroMaterial);
+        }
        //greenyMaterial.color = Color.grey;
     }
 
@@ -51,27 +51,27 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         //     greenyZeroMaterial.color = Color.green;
         //     print("color transformation in greeny");
         // }
-        // if (isTransforming) //qui condizione trigger
-        // {
-        //     //greenyZeroMaterial.color = Color.green;
-        //     // greenyZeroMaterial = greenTransformationMaterial;
-        //     // print("color transformation in greeny"+ greenyZeroMaterial);
-        //     // lastPosition = gameObject.transform.position;
-        //     // ChangeGreeny();
-        //     Destroy(gameObject);
-         //}
+        if (isTransforming) //qui condizione trigger
+        {
+            //greenyZeroMaterial.color = Color.green;
+            greenyZeroMaterial = greenTransformationMaterial;
+            print("color transformation in greeny"+ greenyZeroMaterial);
+            // lastPosition = gameObject.transform.position;
+            // ChangeGreeny();
+            //Destroy(gameObject);
+         }
 
         // else
         // {
         //     print("incredible nothing");
         //     //greenyZeroMaterial.color = Color.grey;
         // }
-        if (isTransforming)
-        {
-            lastPositionGreenyGrizzy = gameObject.transform.position;
-            Destroy(gameObject);
-            menuGame_Manager.ChangeGreeny();
-        }
+        // if (isTransforming)
+        // {
+        //     lastPositionGreenyGrizzy = gameObject.transform.position;
+        //     Destroy(gameObject);
+        //     menuGame_Manager.ChangeGreeny();
+        // }
     }
     // public void ZeroTrasform()
     // {
