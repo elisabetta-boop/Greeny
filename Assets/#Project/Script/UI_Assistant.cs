@@ -15,7 +15,7 @@ public class UI_Assistant : MonoBehaviour
     void Start()
     {
         messageText.text ="Hello Wolrd";
-        textWriter.AddWriter(messageText,"Hello World", 1f);
+        textWriter.AddWriter(messageText,"Hello World", .1f,true);
     }
 
     // Update is called once per frame
@@ -23,4 +23,5 @@ public class UI_Assistant : MonoBehaviour
     {
         
     }
+    
 }

@@ -10,11 +10,13 @@ public class TextWriter : MonoBehaviour
     private float timePerCharacter;
     private float timer;
     private int CharacterIndex;
-    public void AddWriter(Text uiText, string textToWrite, float timePerCharacter)
+    private bool invisibleCharacters;
+    public void AddWriter(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
     {
         this.uiText = uiText;
         this.textToWrite = textToWrite;
         this.timePerCharacter = timePerCharacter;
+        this.invisibleCharacters = invisibleCharacters;
         CharacterIndex=0;
     }
     private void Update()
@@ -22,12 +24,18 @@ public class TextWriter : MonoBehaviour
         if (uiText != null)
         {
             timer -= Time.deltaTime;
-            if(timer <= 0)
+            while(timer <= 0)
             {
                 //Display next character
                 timer += timePerCharacter;
                 CharacterIndex++;
-                uiText.text = textToWrite.Substring(0,CharacterIndex);
+                string text = textToWrite.Substring(0,CharacterIndex);
+                if(invisibleCharacters)
+                {
+                    text += "<color=#00000000>"+ textToWrite.Substring(CharacterIndex)+ "</color>";
+                }
+                uiText.text = text;
+
                 if(CharacterIndex >= textToWrite.Length)
                 {
                     uiText = null;
