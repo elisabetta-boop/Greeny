@@ -18,12 +18,10 @@ public class Door : MonoBehaviour
     public MenuGame_Manager menuGame_Manager;
     public NewPlayerZero newPlayerZero;
     private void Start() {
-    
         animator= GetComponent<Animator>();
         menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
         //newPlayerZero = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZero>();
         //newPlayerZero = GameObject.Find("PlayerZeroName").GetComponentInChildren<NewPlayerZero>();
-        newPlayerZero = GameObject.FindGameObjectWithTag("PlayerZero").GetComponentInChildren<NewPlayerZero>();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -42,6 +40,7 @@ public class Door : MonoBehaviour
     }
     IEnumerator StartMiaoVictoryAnimation()
     {
+        newPlayerZero = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZero>();
         yield return new WaitForSeconds(timeToMiaoVictory);
         //whenVictoryPlayerZero?.Invoke();
         Debug.Log("inside the coroutine miaoVictory");
