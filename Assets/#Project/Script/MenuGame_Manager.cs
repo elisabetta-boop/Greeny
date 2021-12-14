@@ -18,7 +18,7 @@ public class MenuGame_Manager : MonoBehaviour
     public bool counting = false;
     public bool theSceneIsStarted = false;
     public TelevisionController televisionController;
-    public NewPlayerZeroTransformation newPlayerZeroTransformation;
+    //public NewPlayerZeroTransformation newPlayerZeroTransformation;
     
     
 
@@ -29,6 +29,7 @@ public class MenuGame_Manager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
+            playerZero.name = "PlayerZeroName";
             //DontDestroyOnLoad(playerZero);
             //Debug.Log("level zero");
             televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -38,6 +39,7 @@ public class MenuGame_Manager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
+            playerZero.name = "PlayerZeroName";
             //DontDestroyOnLoad(playerZero);
             //Debug.Log("level zero");
             // televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -47,6 +49,7 @@ public class MenuGame_Manager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
+            playerZero.name = "PlayerZeroName";
             //DontDestroyOnLoad(playerZero);
             //Debug.Log("level zero");
             // televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -55,15 +58,15 @@ public class MenuGame_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        newPlayerZeroTransformation = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZeroTransformation>();
-        if(newPlayerZeroTransformation== null)
-        {
-            Debug.Log("newPlayerZeroTransformation null"+newPlayerZeroTransformation);
-        }
-        else
-        {
-            Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
-        }    
+        // newPlayerZeroTransformation = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZeroTransformation>();
+        // if(newPlayerZeroTransformation== null)
+        // {
+        //     Debug.Log("newPlayerZeroTransformation null"+newPlayerZeroTransformation);
+        // }
+        // else
+        // {
+        //     Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
+        // }    
         
     }
     public void ResetPos()
@@ -71,29 +74,23 @@ public class MenuGame_Manager : MonoBehaviour
         playerZero.GetComponent<CharacterController>().enabled = false;
         playerZero.transform.position = StartPos;
         playerZero.GetComponent<CharacterController>().enabled = true;
-
     }
     
     
     void Update()
     {
-        //if(newPlayerZeroTransformation.isTransforming)
-        // {
-        //     Debug.Log("is transforming in menuGame manager "+newPlayerZeroTransformation.isTransforming);
-        //     Destroy(playerZero.gameObject);
-        //     ChangeGreeny();
-        // }
+
     }
 
-    public void ChangeGreeny()
-    {
+    // public void ChangeGreeny()
+    // {
         
-        // instance = this;
-        // playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity) as GameObject;
-        instance= this;
-        playerZero = Instantiate(PlayerPrefabZero[1],newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
+    //     // instance = this;
+    //     // playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity) as GameObject;
+    //     instance= this;
+    //     playerZero = Instantiate(PlayerPrefabZero[1],newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
         
-        Debug.Log("change greeny");
-    }
+    //     Debug.Log("change greeny");
+    // }
 
 }

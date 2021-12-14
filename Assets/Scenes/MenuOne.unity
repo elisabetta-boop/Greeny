@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 195136389}
     - target: {fileID: 1753209181968416196, guid: 63bf4488da2fd404b9161809b1ac400a, type: 3}
       propertyPath: whenVictoryPlayerZero.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1753209181968416196, guid: 63bf4488da2fd404b9161809b1ac400a, type: 3}
       propertyPath: whenEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

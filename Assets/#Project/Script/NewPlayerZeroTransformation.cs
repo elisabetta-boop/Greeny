@@ -39,26 +39,15 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         else{
             Debug.Log("greeny material ok"+greenyZeroMaterial);
         }
-       //greenyMaterial.color = Color.grey;
+
     }
 
     void Update()
     {
-        // Debug.Log("daje trans"+isTransforming);
-        // //if (isTransforming && myVideoPlayer.startVideo)
-        // if ()  
-        // {
-        //     greenyZeroMaterial.color = Color.green;
-        //     print("color transformation in greeny");
-        // }
+        
         if (isTransforming) //qui condizione trigger
         {
-            //greenyZeroMaterial.color = Color.green;
-            // greenyZeroMaterial = greenTransformationMaterial;
-            // print("color transformation in greeny"+ greenyZeroMaterial);
-            // lastPosition = gameObject.transform.position;
-            // ChangeGreeny();
-            //Destroy(gameObject);
+            
             Renderer[] renderers = GetComponentsInChildren<Renderer>();
             foreach (Renderer renderer in renderers)
             {
@@ -69,24 +58,8 @@ public class NewPlayerZeroTransformation : MonoBehaviour
                 isTransforming = false;
             }
          }
-
-        // else
-        // {
-        //     print("incredible nothing");
-        //     //greenyZeroMaterial.color = Color.grey;
-        // }
-        // if (isTransforming)
-        // {
-        //     lastPositionGreenyGrizzy = gameObject.transform.position;
-        //     Destroy(gameObject);
-        //     menuGame_Manager.ChangeGreeny();
-        // }
     }
-    // public void ZeroTrasform()
-    // {
-    //     greenyZeroMaterial.color = Color.green;
-    //     print("color transformation in greeny");
-    // }
+    
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Television"))
@@ -104,12 +77,5 @@ public class NewPlayerZeroTransformation : MonoBehaviour
         yield return new WaitForSeconds(waitTransformation);
         isTransforming=true;
     }
-    // public void ChangeGreeny()
-    // {
-    //     // PlayerZeroGreeny.GetComponent<CharacterController>().enabled = false;
-    //     // playerZeroGreen = Instantiate(PlayerZeroGreeny, lastPosition, Quaternion.identity);
-    //     // playerZeroGreen.GetComponent<CharacterController>().enabled = true;
-        
-
-    // }
+ 
 }
