@@ -10,9 +10,9 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     private Television television;
     public float waitTransformation = 31;
     public Material greenTransformationMaterial;
-    public GameObject PlayerZeroGreeny;
+    //public GameObject PlayerZeroGreeny;
 
-    private GameObject playerZeroGreen;
+    //private GameObject playerZeroGreen;
     public Transform zeroPlayerTransform;
     private Vector3 lastPosition;
     public MenuGame_Manager menuGame_Manager;
@@ -22,7 +22,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
 
     void Start()
     {
-        menuGame_Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<MenuGame_Manager>();
+        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
         if(menuGame_Manager== null)
         {
             Debug.Log("menu game manager null");
