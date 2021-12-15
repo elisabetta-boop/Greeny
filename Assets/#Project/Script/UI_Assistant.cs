@@ -14,7 +14,7 @@ public class UI_Assistant : MonoBehaviour {
     public GameObject uiCanvas;
 
     private void Awake() {
-        uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+        //uiCanvas = GameObject.FindGameObjectWithTag("UICanvas"); //maybebetter assistant
         
         
 
@@ -50,7 +50,7 @@ public class UI_Assistant : MonoBehaviour {
     private void StopTalkingSound() {
         talkingAudioSource.Stop();
         animator.SetBool("isTalking", false);
-        uiCanvas.SetActive(false);
+        //uiCanvas.SetActive(false);
     }
 
     private void Start() {

@@ -21,6 +21,7 @@ TagManager:
   - Door
   - FxTemporaire
   - UICanvas
+  - Title
   layers:
   - Default
   - TransparentFX

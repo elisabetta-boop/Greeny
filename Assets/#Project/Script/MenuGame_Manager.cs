@@ -27,6 +27,7 @@ public class MenuGame_Manager : MonoBehaviour
 
     public  float timer = 2.0f;
     
+    //public CanvasMessageStart canvasMessageStart;
     
 
     void Start()
@@ -38,7 +39,9 @@ public class MenuGame_Manager : MonoBehaviour
             playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
             //theSceneIsStarted = true;
             //coroutine active message 
-            
+            //whenStart?.Invoke();
+            //Invoke("StartTheMessage",2.0f);
+
             
             //coroutine pour television
             televisionController.TVanimator.SetBool("sceneStart", true);  
@@ -60,6 +63,7 @@ public class MenuGame_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //canvasMessageStart = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<CanvasMessageStart>();
 
         
         //newPlayerZeroTransformation = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZeroTransformation>();
@@ -86,17 +90,22 @@ public class MenuGame_Manager : MonoBehaviour
     
     void Update()
     {
-
-        timer -= Time.deltaTime;
-        Debug.Log(timer);
+        // if(canvasMessageStart == null)
+        // {
+        //     Invoke("canvasMessageStart.StartMessage", 2.0f);
+        // }
         
-        if(timer<= 0)
-        {
-            Debug.Log("timer goo "+timer);
-            whenStart?.Invoke();
-        }
     }
 
+    // IEnumerator StartMEssage()
+    // {
+
+    // }
+
+    // void StartTheMessage()
+    // {
+    //     canvasMessageStart.StartMessage();
+    // }
     
     
 
