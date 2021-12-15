@@ -12,7 +12,7 @@ public class NewPlayerZero : MonoBehaviour
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
-    private float rotationSpeed = 5f;
+    private float rotationSpeed = 30f;
     [SerializeField]
     private CharacterController controller;
     [SerializeField]
@@ -34,6 +34,8 @@ public class NewPlayerZero : MonoBehaviour
     public int victoryAnimation;
     //public Door door;
     public MenuGame_Manager menuGame_Manager;
+
+    private bool isBack = false;
     
     private void Awake()
     {
@@ -92,6 +94,10 @@ public class NewPlayerZero : MonoBehaviour
         //rotation
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y,0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, rotationSpeed * Time.deltaTime);
+
+        //transform.rotation = transform.LookAt(transform.position  + GameObject.GetComponent<RigidBody>().velocity);
 
         // if(door.doorIsOpen)
         // {
