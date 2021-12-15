@@ -11,8 +11,13 @@ public class UI_Assistant : MonoBehaviour {
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
     private Animator animator;
+    public GameObject uiCanvas;
 
     private void Awake() {
+        uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+        
+        
+
         messageText = transform.Find("Messages").Find("messageText").GetComponent<Text>();
         talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
@@ -23,21 +28,20 @@ public class UI_Assistant : MonoBehaviour {
                 textWriterSingle.WriteAllAndDestroy();
             } else {
                 string[] messageArray = new string[] {
-                    "Hellooooo, Welcome to gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.",
-                    "This is the assistant speaking, hello and goodbye, see you next time!",
-                    // "Hey there!",
-                    // "This is a really cool and useful effect",
-                    // "Let's learn some code and make awesome games!",
-                    // "Check out Battle Royale Tycoon on Steam!",
+                    "Hellooooo, Welcome to gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored. Click on the arrow to continue.....",
+                    
                 };
 
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSound();
-                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .02f, true, true, StopTalkingSound);
+                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
             }
         };
     }
-
+    // private void StartUIAssistant()
+    // {
+    //     uiCanvas.SetActive(true);
+    // }
     private void StartTalkingSound() {
         talkingAudioSource.Play();
         animator.SetBool("isTalking", true);
@@ -46,6 +50,7 @@ public class UI_Assistant : MonoBehaviour {
     private void StopTalkingSound() {
         talkingAudioSource.Stop();
         animator.SetBool("isTalking", false);
+        uiCanvas.SetActive(false);
     }
 
     private void Start() {

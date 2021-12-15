@@ -19,6 +19,8 @@ TagManager:
   - Television
   - MenuGame
   - Door
+  - FxTemporaire
+  - UICanvas
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MenuGame_Manager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class MenuGame_Manager : MonoBehaviour
     // public GameObject GreenPlayerPrefabZero;
     public GameObject playerZero;
     public Vector3 StartPos;
+    public UI_Assistant uiAssistant;
+    public UnityEvent whenStart;
     
 
   
@@ -19,6 +22,10 @@ public class MenuGame_Manager : MonoBehaviour
     public bool theSceneIsStarted = false;
     public TelevisionController televisionController;
     public NewPlayerZeroTransformation newPlayerZeroTransformation;
+    public float timeToMessage = 0.1f;
+    public float timeToTelevision = 5f;
+
+    public  float timer = 2.0f;
     
     
 
@@ -29,41 +36,43 @@ public class MenuGame_Manager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
-            //DontDestroyOnLoad(playerZero);
-            //Debug.Log("level zero");
+            //theSceneIsStarted = true;
+            //coroutine active message 
+            
+            
+            //coroutine pour television
             televisionController.TVanimator.SetBool("sceneStart", true);  
         }
         if (instance==null && levelNow == 1)
         {
-            //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
-            //DontDestroyOnLoad(playerZero);
-            //Debug.Log("level zero");
-            // televisionController.TVanimator.SetBool("sceneStart", true);  
+
         }
         if (instance==null && levelNow == 2)
         {
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
-            //DontDestroyOnLoad(playerZero);
-            //Debug.Log("level zero");
-            // televisionController.TVanimator.SetBool("sceneStart", true);  
+             
         }
         else
         {
             Destroy(gameObject);
         }
-        newPlayerZeroTransformation = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZeroTransformation>();
-        if(newPlayerZeroTransformation== null)
-        {
-            Debug.Log("newPlayerZeroTransformation null"+newPlayerZeroTransformation);
-        }
-        else
-        {
-            Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
-        }    
+
+        
+        //newPlayerZeroTransformation = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZeroTransformation>();
+        // if(newPlayerZeroTransformation== null)
+        // {
+        //     Debug.Log("newPlayerZeroTransformation null"+newPlayerZeroTransformation);
+        // }
+        // else
+        // {
+        //     Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
+        // }    
+        //uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
+        
         
     }
     public void ResetPos()
@@ -77,23 +86,18 @@ public class MenuGame_Manager : MonoBehaviour
     
     void Update()
     {
-        //if(newPlayerZeroTransformation.isTransforming)
-        // {
-        //     Debug.Log("is transforming in menuGame manager "+newPlayerZeroTransformation.isTransforming);
-        //     Destroy(playerZero.gameObject);
-        //     ChangeGreeny();
-        // }
+
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+        
+        if(timer<= 0)
+        {
+            Debug.Log("timer goo "+timer);
+            whenStart?.Invoke();
+        }
     }
 
-    // public void ChangeGreeny()
-    // {
-        
-    //     // instance = this;
-    //     // playerZero = Instantiate(GreenPlayerPrefabZero,newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity) as GameObject;
-    //     // instance= this;
-    //     // playerZero = Instantiate(PlayerPrefabZero[1],newPlayerZeroTransformation.lastPositionGreenyGrizzy,Quaternion.identity);
-        
-    //     Debug.Log("change greeny");
-    // }
+    
+    
 
 }
