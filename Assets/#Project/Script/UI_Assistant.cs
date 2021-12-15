@@ -23,11 +23,12 @@ public class UI_Assistant : MonoBehaviour {
                 textWriterSingle.WriteAllAndDestroy();
             } else {
                 string[] messageArray = new string[] {
+                    "Hellooooo, Welcome to gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.",
                     "This is the assistant speaking, hello and goodbye, see you next time!",
-                    "Hey there!",
-                    "This is a really cool and useful effect",
-                    "Let's learn some code and make awesome games!",
-                    "Check out Battle Royale Tycoon on Steam!",
+                    // "Hey there!",
+                    // "This is a really cool and useful effect",
+                    // "Let's learn some code and make awesome games!",
+                    // "Check out Battle Royale Tycoon on Steam!",
                 };
 
                 string message = messageArray[Random.Range(0, messageArray.Length)];
