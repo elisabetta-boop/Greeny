@@ -1281,11 +1281,17 @@ MonoBehaviour:
   - {fileID: 0}
   playerZero: {fileID: 0}
   StartPos: {x: 2, y: 12, z: 7}
+  uiAssistant: {fileID: 0}
+  whenStart:
+    m_PersistentCalls:
+      m_Calls: []
   levelNow: 1
   counting: 0
   theSceneIsStarted: 0
   televisionController: {fileID: 0}
   newPlayerZeroTransformation: {fileID: 0}
+  timeToMessage: 0.1
+  timer: 2
 --- !u!4 &1707510627
 Transform:
   m_ObjectHideFlags: 0
