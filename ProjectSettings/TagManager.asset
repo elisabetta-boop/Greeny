@@ -22,6 +22,7 @@ TagManager:
   - FxTemporaire
   - UICanvas
   - Title
+  - UICanvas2
   layers:
   - Default
   - TransparentFX

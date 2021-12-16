@@ -34,6 +34,8 @@ public class NewPlayerZero : MonoBehaviour
     public int victoryAnimation;
     //public Door door;
     public MenuGame_Manager menuGame_Manager;
+    public float timeAnimVictory = 5.0f;
+    
 
     private bool isBack = false;
     
@@ -106,16 +108,7 @@ public class NewPlayerZero : MonoBehaviour
     }
     public void MiaoVictoryAnimation()
     {
-        Debug.Log(animator.gameObject.activeSelf + " active self?");
-        //animator.CrossFade(victoryAnimation, animationPlayerTransition);
-        animator.SetBool("miaoVictory", true);
-        Debug.Log("animator ok.... normally inside miaoVictoryAnimation");
-        // if(gameObject.name == "PlayerZeroName")
-        // {
-            
-        // }
-        // else{
-        //     Debug.Log("No animation in miaovictoryanimation");
-        // }
+        animator.SetTrigger("Victory"); 
     }
+    
 }
