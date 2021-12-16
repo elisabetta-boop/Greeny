@@ -12,6 +12,8 @@ public class UI_Assistant : MonoBehaviour {
     private AudioSource talkingAudioSource;
     private Animator animator;
     public GameObject uiCanvas;
+    public bool firstPhrase= false;
+    public bool endFirstPhrase= false;
 
     private void Awake() {
         //uiCanvas = GameObject.FindGameObjectWithTag("UICanvas"); //maybebetter assistant
@@ -27,15 +29,22 @@ public class UI_Assistant : MonoBehaviour {
                 // Currently active TextWriter
                 textWriterSingle.WriteAllAndDestroy();
             } else {
+                // if(!firstPhrase)
+                // {
+                firstPhrase = true;
                 string[] messageArray = new string[] {
-                    "Hellooooo, Welcome to gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored. Click on the arrow to continue.....",
-                    
+                    "Hellooooo, Welcome to Gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.              Click on the arrow to continue.....",
+                    "One day an ordinary Grizzy sees something different ... a television falls from the sky ... and decides to go and see ...      (go to television)",
                 };
-
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSound();
                 textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
+                
+                //}
+
+
             }
+            
         };
     }
     // private void StartUIAssistant()
@@ -48,6 +57,7 @@ public class UI_Assistant : MonoBehaviour {
     }
 
     private void StopTalkingSound() {
+        endFirstPhrase = true;
         talkingAudioSource.Stop();
         animator.SetBool("isTalking", false);
         //uiCanvas.SetActive(false);
@@ -55,6 +65,10 @@ public class UI_Assistant : MonoBehaviour {
 
     private void Start() {
         //TextWriter.AddWriter_Static(messageText, "This is the assistant speaking, hello and goodbye, see you next time!", .1f, true);
+    }
+
+    void Update(){
+        
     }
 
 }
