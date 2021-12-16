@@ -20,6 +20,7 @@ public class MyVideoPlayer : MonoBehaviour
     
     public bool EndTelevision = false;
     
+    
     void Awake() 
     {
         // mainCamera = GameObject.Find("Main Camera");
@@ -41,6 +42,7 @@ public class MyVideoPlayer : MonoBehaviour
             cameraTelevision.cameraAnimator.SetBool("TelevisionAnimation", false);
             EndTelevision = true;
             BackToMainCamera();
+
             
             
             

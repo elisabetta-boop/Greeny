@@ -8,19 +8,19 @@ public class UIManager : MonoBehaviour
     public GameObject title;
     public GameObject advise;
 
-    
+    public GameObject dialogBox2;
 
     private float currentTime = 0;
     public float startMessage = 5.0f;
+    public float startMessage2 = 1.0f;
     public float startTitle= 1.0f;
-    
     public float timeTostopTitle = 4.0f;
     public float timeToAdvise= 5.1f;
     public float timeBlinkAdvise = 2.0f;
     public float timeToStopDialogBox = 2.0f;
 
     public UI_Assistant uiAssistant;
-
+    public float timeToStopDialogBox2 = 2.0f;
     public MyVideoPlayer myVideoPlayer;
 
     
@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
         title.SetActive(true);
         dialogBox.SetActive(false);
         advise.SetActive(false);
+        dialogBox2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +45,10 @@ public class UIManager : MonoBehaviour
             if(myVideoPlayer.TelevisionAnimation)
             {
                 dialogBox.SetActive(false);
+            }
+            else if(myVideoPlayer.EndTelevision)
+            {
+                dialogBox2.SetActive(true);
             }
             // if(uiAssistant.endFirstPhrase)
             // {

@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using CodeMonkey.Utils;
 
-public class UI_Assistant : MonoBehaviour {
+public class UI_Assistant2 : MonoBehaviour {
 
-    private Text messageText;
+    private Text messageText2;
     
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
@@ -19,13 +19,13 @@ public class UI_Assistant : MonoBehaviour {
     private void Awake() {
 
 
-        messageText = transform.Find("Messages").Find("messageText").GetComponent<Text>();
+        messageText2 = transform.Find("Messages2").Find("messageText2").GetComponent<Text>();
         
 
         talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
 
-        transform.Find("Messages").GetComponent<Button_UI>().ClickFunc = () => {
+        transform.Find("Messages2").GetComponent<Button_UI>().ClickFunc = () => {
             if (textWriterSingle != null && textWriterSingle.IsActive()) {
                 // Currently active TextWriter
                 textWriterSingle.WriteAllAndDestroy();
@@ -34,11 +34,11 @@ public class UI_Assistant : MonoBehaviour {
                 // {
                 firstPhrase = true;
                 string[] messageArray = new string[] {
-                    "Hellooooo, Welcome to Gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.                                  One day an ordinary Grizzy sees something different ... a television falls from the sky ... and decides to go and see ...      (go to television)",
+                    "ooooooooooohhhh....                ",
                 };
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSound();
-                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
+                textWriterSingle = TextWriter.AddWriter_Static(messageText2, message, .05f, true, true, StopTalkingSound);
                 
                 //}
 
