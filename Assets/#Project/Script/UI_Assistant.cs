@@ -8,6 +8,7 @@ using CodeMonkey.Utils;
 public class UI_Assistant : MonoBehaviour {
 
     private Text messageText;
+    private Text messageText2;
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
     private Animator animator;
@@ -21,6 +22,8 @@ public class UI_Assistant : MonoBehaviour {
         
 
         messageText = transform.Find("Messages").Find("messageText").GetComponent<Text>();
+        //messageText2 = transform.Find("Messages").Find("messageText2").GetComponent<Text>();
+
         talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
 
@@ -33,8 +36,7 @@ public class UI_Assistant : MonoBehaviour {
                 // {
                 firstPhrase = true;
                 string[] messageArray = new string[] {
-                    "Hellooooo, Welcome to Gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.              Click on the arrow to continue.....",
-                    "One day an ordinary Grizzy sees something different ... a television falls from the sky ... and decides to go and see ...      (go to television)",
+                    "Hellooooo, Welcome to Gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.                                  One day an ordinary Grizzy sees something different ... a television falls from the sky ... and decides to go and see ...      (go to television)",
                 };
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSound();

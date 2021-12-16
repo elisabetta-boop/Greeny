@@ -92,7 +92,7 @@ public class NewPlayerZero : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
         //rotation
-        Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y,0);
+        Quaternion targetRotation = Quaternion.LookRotation(move);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         
         //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, rotationSpeed * Time.deltaTime);
