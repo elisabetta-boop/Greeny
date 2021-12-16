@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NewPlayerZeroTransformation : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     public MenuGame_Manager menuGame_Manager;
     public Vector3 lastPositionGreenyGrizzy;
     public Explosion explosion;
+    
     
     
 
@@ -97,7 +99,7 @@ public class NewPlayerZeroTransformation : MonoBehaviour
             print("television trigger");
             // greenyMaterial.color = Color.green;
             // print("color transformation in greeny");
-
+            
             StartCoroutine(TransformActivation());
         }
         }

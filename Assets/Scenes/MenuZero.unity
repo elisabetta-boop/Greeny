@@ -335,14 +335,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.05490196, g: 0.8666667, b: 0, a: 0.5529412}
+  m_Color: {r: 0, g: 0.8666667, b: 0.1374342, a: 0.5529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d72f0b65e52a82944b534cff2b5aacae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d146f00157217714487dbde02324f0d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -904,6 +904,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5576771850995556702, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
   m_PrefabInstance: {fileID: 1770731551}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &428641724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 428641729, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
+  m_PrefabInstance: {fileID: 1770731551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428641723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816a66ef19fab104eafbcf7f017a1c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &428641728
 Animator:
   serializedVersion: 3
@@ -937,6 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuGame: {fileID: 1707510626}
   TVanimator: {fileID: 428641728}
+  timeToTelevision: 5
 --- !u!1 &501602832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1308,7 @@ MonoBehaviour:
   timeBlinkAdvise: 1
   timeToStopDialogBox: 2
   uiAssistant: {fileID: 738261203}
+  myVideoPlayer: {fileID: 428641724}
 --- !u!4 &662259421
 Transform:
   m_ObjectHideFlags: 0
@@ -2573,7 +2586,6 @@ MonoBehaviour:
   televisionController: {fileID: 1446976039}
   newPlayerZeroTransformation: {fileID: 8730847660460158932, guid: 059d09c26592a7845aa7deb931f156ba, type: 3}
   timeToMessage: 1
-  timeToTelevision: 5
   timer: 2
 --- !u!4 &1707510627
 Transform:
@@ -2616,6 +2628,10 @@ PrefabInstance:
       propertyPath: menuGame
       value: 
       objectReference: {fileID: 1707510626}
+    - target: {fileID: 1446976039, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
+      propertyPath: timeToTelevision
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1931289511, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
       propertyPath: whenLightUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2647,6 +2663,14 @@ PrefabInstance:
     - target: {fileID: 4913101085179773958, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913101085179773958, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460320255999206142, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
+      propertyPath: m_TagString
+      value: Television
       objectReference: {fileID: 0}
     - target: {fileID: 5460320255999206142, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2906,6 +2930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuGame: {fileID: 1707510626}
   TVanimator: {fileID: 1931289515}
+  timeToTelevision: 5
 --- !u!1 &1967265619
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class MenuGame_Manager : MonoBehaviour
     public TelevisionController televisionController;
     public NewPlayerZeroTransformation newPlayerZeroTransformation;
     public float timeToMessage = 0.1f;
-    public float timeToTelevision = 5f;
+    
 
     public  float timer = 2.0f;
     
@@ -37,14 +37,11 @@ public class MenuGame_Manager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
-            //theSceneIsStarted = true;
-            //coroutine active message 
-            //whenStart?.Invoke();
-            //Invoke("StartTheMessage",2.0f);
-
             
+
+            televisionController.StartLaunchTelevision();
             //coroutine pour television
-            televisionController.TVanimator.SetBool("sceneStart", true);  
+            //televisionController.TVanimator.SetBool("sceneStart", true);  
         }
         if (instance==null && levelNow == 1)
         {

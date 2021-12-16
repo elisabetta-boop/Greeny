@@ -16,13 +16,18 @@ public class UIManager : MonoBehaviour
     
     public float timeTostopTitle = 4.0f;
     public float timeToAdvise= 5.1f;
-    public float timeBlinkAdvise = 1.0f;
+    public float timeBlinkAdvise = 2.0f;
     public float timeToStopDialogBox = 2.0f;
 
     public UI_Assistant uiAssistant;
 
+    public MyVideoPlayer myVideoPlayer;
+
+    
+
     void Start()
     {
+        myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
         uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
         title.SetActive(true);
         dialogBox.SetActive(false);
@@ -36,6 +41,10 @@ public class UIManager : MonoBehaviour
         if (currentTime >= startMessage)
         {
             dialogBox.SetActive(true);
+            if(myVideoPlayer.TelevisionAnimation)
+            {
+                dialogBox.SetActive(false);
+            }
             // if(uiAssistant.endFirstPhrase)
             // {
             //     StartCoroutine(EndFirstDialogBox());
@@ -78,9 +87,9 @@ public class UIManager : MonoBehaviour
         // yield return new WaitForSeconds(timeBlinkAdvise);
         // advise.SetActive(false);
     }
-    IEnumerator EndFirstDialogBox()
-    {
-        yield return new WaitForSeconds(timeToStopDialogBox);
-        dialogBox.SetActive(false);
-    }
+    // Ienumerator EndFirstDialogBox()
+    // {
+    //     yield return new WaitForSeconds(timeToStopDialogBox);
+    //     dialogBox.SetActive(false);
+    // }
 }
