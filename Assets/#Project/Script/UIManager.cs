@@ -46,10 +46,11 @@ public class UIManager : MonoBehaviour
             {
                 dialogBox.SetActive(false);
             }
-            else if(myVideoPlayer.EndTelevision)
-            {
-                dialogBox2.SetActive(true);
-            }
+            // else if(myVideoPlayer.EndTelevision)
+            // {
+            //     Debug.Log(myVideoPlayer.EndTelevision + " end television?");
+            //     dialogBox2.SetActive(true);
+            // }
             // if(uiAssistant.endFirstPhrase)
             // {
             //     StartCoroutine(EndFirstDialogBox());
@@ -97,4 +98,9 @@ public class UIManager : MonoBehaviour
     //     yield return new WaitForSeconds(timeToStopDialogBox);
     //     dialogBox.SetActive(false);
     // }
+
+    public void StartDialogBox2()
+    {
+        dialogBox2.SetActive(true);
+    }
 }

@@ -23,6 +23,7 @@ TagManager:
   - UICanvas
   - Title
   - UICanvas2
+  - UIManager
   layers:
   - Default
   - TransparentFX

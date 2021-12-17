@@ -2430,6 +2430,7 @@ GameObject:
   - component: {fileID: 639390749}
   - component: {fileID: 639390748}
   - component: {fileID: 639390747}
+  - component: {fileID: 639390751}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2457,7 +2458,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30746d57269b91441bbad4b88cf07f79, type: 2}
+  - {fileID: 2100000, guid: 557afed24d539c749b121a4e65be2cb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2521,7 +2522,7 @@ ParticleSystem:
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
@@ -7279,7 +7280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741d7e04c8e57c3429461a11b54eb071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunTransform: {fileID: 0}
+  sunTransform: {fileID: 855475502}
   sun: {fileID: 855475501}
   angleAtNoon: 30
   hourMinuteSecond: {x: 20, y: 0, z: 0}
@@ -7310,6 +7311,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &639390751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639390746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6954b3e772ac34fbc8c0ad6d4b9b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starsParticleSystem: {fileID: 639390748}
+  starCount: 5000
+  spreads:
+  - proportion: 0.3
+    fromXZ: 0
+    toXZ: 360
+    fromY: 80
+    toY: 100
+  - proportion: 0.3
+    fromXZ: 0
+    toXZ: 360
+    fromY: 70
+    toY: 110
+  - proportion: 0.4
+    fromXZ: 0
+    toXZ: 360
+    fromY: 0
+    toY: 180
 --- !u!1 &649066895
 GameObject:
   m_ObjectHideFlags: 0
@@ -7427,7 +7458,7 @@ GameObject:
   - component: {fileID: 662259420}
   m_Layer: 0
   m_Name: UIManager
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8281,7 +8312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855475500}
   m_LocalRotation: {x: 0.049816944, y: -0.99492687, z: 0.06432415, w: 0.05917108}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -52, y: -1.8, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9905,6 +9936,10 @@ PrefabInstance:
       value: 0.258
       objectReference: {fileID: 0}
     - target: {fileID: 428641729, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
+      propertyPath: dialogBox2
+      value: 
+      objectReference: {fileID: 2109696129}
+    - target: {fileID: 428641729, guid: db4d9da44c4e783449e9f229fe8adc8a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1244145800}
@@ -10668,7 +10703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97, y: 51}
+  m_AnchoredPosition: {x: -97, y: 195}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109696129

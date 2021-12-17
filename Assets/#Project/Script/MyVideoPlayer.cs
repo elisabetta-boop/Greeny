@@ -19,6 +19,9 @@ public class MyVideoPlayer : MonoBehaviour
     public bool startVideo = false;
     
     public bool EndTelevision = false;
+
+    public UI_Assistant2 dialogBox2;
+    public UIManager uiManager;
     
     
     void Awake() 
@@ -26,6 +29,8 @@ public class MyVideoPlayer : MonoBehaviour
         // mainCamera = GameObject.Find("Main Camera");
         videoPlayer = GetComponent<VideoPlayer>();
         // zeroPlayer = GetComponent<PlayerZeroTransformation>();
+        dialogBox2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
     void Start()
     {
@@ -42,6 +47,8 @@ public class MyVideoPlayer : MonoBehaviour
             cameraTelevision.cameraAnimator.SetBool("TelevisionAnimation", false);
             EndTelevision = true;
             BackToMainCamera();
+
+            uiManager.StartDialogBox2();
 
             
             
