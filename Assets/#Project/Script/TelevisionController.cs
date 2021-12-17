@@ -21,7 +21,7 @@ public class TelevisionController : MonoBehaviour
     }
     public void StartLaunchTelevision()
     {
-        Debug.Log("launch Tv");
+        //Debug.Log("launch Tv");
         StartCoroutine(LaunchTelevision());
     }
     IEnumerator LaunchTelevision()

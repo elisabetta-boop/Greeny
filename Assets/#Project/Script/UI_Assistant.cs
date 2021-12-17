@@ -34,7 +34,7 @@ public class UI_Assistant : MonoBehaviour {
                 // {
                 firstPhrase = true;
                 string[] messageArray = new string[] {
-                    "Hellooooo, Welcome to Gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored.                                  One day an ordinary Grizzy sees something different ... a television falls from the sky ... and decides to go and see ...      (go to television)",
+                    "Hellooooo, Welcome to Gribiza, this is a distant cubic planet where the grizzys live. This gray people spends their time getting bored. One day an ordinary Grizzy sees something different ... a television falls from the sky ... and decides to go and see ... (go to television)",
                 };
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSound();

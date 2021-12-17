@@ -40,7 +40,7 @@ public class Door : MonoBehaviour
         newPlayerZero = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<NewPlayerZero>();
         yield return new WaitForSeconds(timeToMiaoVictory);
         //whenVictoryPlayerZero?.Invoke();
-        Debug.Log("inside the coroutine miaoVictory");
+        //Debug.Log("inside the coroutine miaoVictory");
         newPlayerZero.MiaoVictoryAnimation();
         
     }

@@ -19,6 +19,8 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     public MenuGame_Manager menuGame_Manager;
     public Vector3 lastPositionGreenyGrizzy;
     public Explosion explosion;
+
+    
     
     
     
@@ -26,55 +28,16 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     void Start()
     {
         menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
-        if(menuGame_Manager== null)
-        {
-            Debug.Log("menu game manager null");
-        }
-        else{
-            Debug.Log("menu game manager ok");
-        }
+        
         explosion = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<Explosion>();
-        // greenyZeroMaterial = GetComponentInChildren <Renderer>().material;
-        // if(greenyZeroMaterial== null)
-        // {
-        //     Debug.Log("greeny material null");
-
-        // }
-        // else{
-        //     Debug.Log("greeny material ok"+greenyZeroMaterial);
-        // }
-       //greenyMaterial.color = Color.grey;
+        
     }
 
     void Update()
     {
-        // Debug.Log("daje trans"+isTransforming);
-        // //if (isTransforming && myVideoPlayer.startVideo)
-        // if ()  
-        // {
-        //     greenyZeroMaterial.color = Color.green;
-        //     print("color transformation in greeny");
-        // }
-        // if (isTransforming) //qui condizione trigger
-        // {
-        //     //greenyZeroMaterial.color = Color.green;
-        //     // greenyZeroMaterial = greenTransformationMaterial;
-        //     // print("color transformation in greeny"+ greenyZeroMaterial);
-        //     // lastPosition = gameObject.transform.position;
-        //     // ChangeGreeny();
-        //     Destroy(gameObject);
-         //}
-
-        // else
-        // {
-        //     print("incredible nothing");
-        //     //greenyZeroMaterial.color = Color.grey;
-        // }
+        
         if (isTransforming)
         {
-            // lastPositionGreenyGrizzy = gameObject.transform.position;
-            // Destroy(gameObject);
-            // menuGame_Manager.ChangeGreeny();
             Renderer[] renderers = GetComponentsInChildren<Renderer>();
             foreach (Renderer renderer in renderers)
             {
@@ -86,20 +49,12 @@ public class NewPlayerZeroTransformation : MonoBehaviour
             }
         }
     }
-    // public void ZeroTrasform()
-    // {
-    //     greenyZeroMaterial.color = Color.green;
-    //     print("color transformation in greeny");
-    // }
+
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Television"))
         {
-            //isTransforming = true;
-            print("television trigger");
-            // greenyMaterial.color = Color.green;
-            // print("color transformation in greeny");
-            
+            //print("television trigger");
             StartCoroutine(TransformActivation());
         }
         }
@@ -107,14 +62,6 @@ public class NewPlayerZeroTransformation : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTransformation);
         isTransforming=true;
-        explosion.Explode();
+        explosion.Explode(); 
     }
-    // public void ChangeGreeny()
-    // {
-    //     // PlayerZeroGreeny.GetComponent<CharacterController>().enabled = false;
-    //     // playerZeroGreen = Instantiate(PlayerZeroGreeny, lastPosition, Quaternion.identity);
-    //     // playerZeroGreen.GetComponent<CharacterController>().enabled = true;
-        
-
-    // }
 }

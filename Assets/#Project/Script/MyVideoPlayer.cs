@@ -22,6 +22,7 @@ public class MyVideoPlayer : MonoBehaviour
 
     public UI_Assistant2 dialogBox2;
     public UIManager uiManager;
+
     
     
     void Awake() 
@@ -48,13 +49,8 @@ public class MyVideoPlayer : MonoBehaviour
             EndTelevision = true;
             BackToMainCamera();
 
-            uiManager.StartDialogBox2();
-
-            
-            
-            
             //zeroPlayer.ZeroTrasform();
-            Debug.Log("the time is finish and trasforming "+zeroPlayer.isTransforming);
+            //Debug.Log("the time is finish and trasforming "+zeroPlayer.isTransforming);
             
         }
         // if(startVideo)
@@ -78,9 +74,10 @@ public class MyVideoPlayer : MonoBehaviour
     IEnumerator coroutinePlayVideo()
     {
         yield return new WaitForSeconds(timeVideoStart); // maybe less than 5 kind 4.5
+
         startVideo = true;
-        Debug.Log("time to start" + timeVideoStart);
-        Debug.Log("video length " + videoPlayer.length);
+        // Debug.Log("time to start" + timeVideoStart);
+        // Debug.Log("video length " + videoPlayer.length);
         videoPlayer.Play();
     }
 

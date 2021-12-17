@@ -7,8 +7,7 @@ public class NewPlayerZero : MonoBehaviour
 {
     [SerializeField]
     private float playerSpeed = 2.0f;
-    [SerializeField]
-    private float jumpHeight = 1.0f;
+
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
@@ -35,21 +34,19 @@ public class NewPlayerZero : MonoBehaviour
     //public Door door;
     public MenuGame_Manager menuGame_Manager;
     public float timeAnimVictory = 5.0f;
-    
 
-    private bool isBack = false;
     
     private void Awake()
     {
         menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
         animator = GetComponentInChildren<Animator>();
-        if(animator == null)
-        {
-            Debug.Log("animator null");
-        }
-        else{
-            Debug.Log("animator ok");
-        }
+        // if(animator == null)
+        // {
+        //     Debug.Log("animator null");
+        // }
+        // else{
+        //     Debug.Log("animator ok");
+        // }
         //door = GameObject.FindGameObjectWithTag("Door").GetComponent<Door>();
         playerCam= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
 

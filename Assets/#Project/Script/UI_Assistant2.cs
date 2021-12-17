@@ -13,12 +13,12 @@ public class UI_Assistant2 : MonoBehaviour {
     private AudioSource talkingAudioSource;
     private Animator animator;
     public GameObject uiCanvas;
-    public bool firstPhrase= false;
+    public bool firstPhrase2= false;
     public bool endFirstPhrase= false;
 
     private void Awake() {
 
-
+        firstPhrase2 = false;
         messageText2 = transform.Find("Messages2").Find("messageText2").GetComponent<Text>();
         
 
@@ -32,9 +32,9 @@ public class UI_Assistant2 : MonoBehaviour {
             } else {
                 // if(!firstPhrase)
                 // {
-                firstPhrase = true;
+                firstPhrase2 = true;
                 string[] messageArray = new string[] {
-                    "ooooooooooohhhh....                ",
+                    "ooooooooooohhhh....  as if by magic he transformed into ... Greeny! ... vibrant with new energy, his mission now is to color the whole world green ... if you want to help him enter the door to find out what happens ...               ",
                 };
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSound();
