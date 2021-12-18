@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class MenuGame_Manager : MonoBehaviour
 {
@@ -73,7 +74,10 @@ public class MenuGame_Manager : MonoBehaviour
         //     Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
         // }    
         //uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
-        
+        if(Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
         
     }
     public void ResetPos()

@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public UI_Assistant uiAssistant;
     public UI_Assistant2 uiAssistant2;
     public Explosion explosion;
+    public PlayTheIntro playTheIntro;
 
     private float currentTime = 0;
     public float startMessage = 5.0f;
@@ -24,8 +25,8 @@ public class UIManager : MonoBehaviour
     public float timeBlinkAdvise = 2.0f;
     public float timeToStopDialogBox = 2.0f;
     public float timeVideoStartDialogBox2 = 5.0f;
-    public float timeVideoStartDialogBox22 = 12.0f;
-    public float timeToStopDialogBox2 = 5.0f;
+    public float timeVideoStartDialogBox22 = 3.0f;
+    public float timeToStopDialogBox2 = 10.0f;
     public float timeStartTitle = 3.0f;
     public float timeStopTitle = 5.0f;
     public float timerAdviseBox = 3.0f;
@@ -34,18 +35,22 @@ public class UIManager : MonoBehaviour
     public bool isTitled = false;
     public bool isDialogBox = false;
     public bool okblinking = false;
+    private int monMax=0;
 
 
     
 
     void Start()
     {
+        monMax = 0;
+        isDialogBox = false;
+        okDialogBox2 =false;
         myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
         uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
         uiAssistant2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
         //buttonMenu = GameObject.FindGameObjectWithTag("ButtonMenu");
-        
-        buttonMenu.SetActive(true);
+        playTheIntro = GameObject.FindGameObjectWithTag("Play").GetComponent<PlayTheIntro>();
+        //buttonMenu.SetActive(true);
         title.SetActive(false);
         dialogBox.SetActive(false);
         advise.SetActive(false);
@@ -57,62 +62,79 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime >= startMessage)
+        if(playTheIntro.isPlaytheIntro)
         {
-            dialogBox.SetActive(true);
-            if(myVideoPlayer.TelevisionAnimation)
+            Debug.Log("we can start");
+            currentTime += Time.deltaTime;
+            if (currentTime >= startMessage)
             {
-                dialogBox.SetActive(false);
-                buttonMenu.SetActive(false);
+                dialogBox.SetActive(true);
+                if(myVideoPlayer.TelevisionAnimation)
+                {
+                    dialogBox.SetActive(false);
+                    buttonMenu.SetActive(false);
+                }
             }
-            
-        }
-        if(currentTime>= timeToAdvise )
-        {
-            if(advise!=null && !uiAssistant.firstPhrase && !okblinking)
+            if(currentTime>= timeToAdvise )
             {
-                advise.SetActive(true);
-                
-                StartCoroutine(BlinkAdvise());  
+                if(advise!=null && !uiAssistant.firstPhrase && !okblinking)
+                {
+                    advise.SetActive(true);
+                    
+                    StartCoroutine(BlinkAdvise());  
+                }
+                else
+                {
+                    advise.SetActive(false);
+                }
             }
-            else
-            {
-                advise.SetActive(false);
-            }
-        }
 
-        if(myVideoPlayer.EndTelevision && dialogBox2 !=null && !uiAssistant2.firstPhrase2)// && !isDialogBox)
+        else
+        {
+            title.SetActive(false);
+            dialogBox.SetActive(false);
+            advise.SetActive(false);
+            dialogBox2.SetActive(false);
+            advise2.SetActive(false);
+        }
+        if(myVideoPlayer.EndTelevision && !uiAssistant2.firstPhrase2 && !isDialogBox && !okDialogBox2)
         {
             //Debug.Log("ciao end television");
             //StartCoroutine(StartDialogBox2());
-           
             StartCoroutine(StartStartDialogBox2());
             StartCoroutine(StartTitle());
-            buttonMenu.SetActive(true);
-            if(!okDialogBox2 && dialogBox2!=null)// && isDialogBox)
+            //buttonMenu.SetActive(true);
+            if(isDialogBox) //&& monMax==0)// && isDialogBox)
             {
                 StartCoroutine(StopTheDialogBox2());
+                
             }
             if(isTitled)
             {
                 StartCoroutine(TimeStopTitle());
             }
-            else
-            {
-                title.SetActive(false);
-            }
+            // else
+            // {
+            //     title.SetActive(false);
+            //     //dialogBox2.SetActive(false);
+            // }
         }
-        //else{
-           // dialogBox2.SetActive(false);
-       // }
+
+        else{
+            Debug.Log("mayday problem");
+            //dialogBox2.SetActive(false);
+            //title.SetActive(false);
+            //buttonMenu.SetActive(true);
+        }
 
         
-        if(bastaAdvise && advise2 != null)
+        if(bastaAdvise && advise2 != null)   
         {
             //Debug.Log("basta advise");
             advise2.SetActive(false);
         }
+    }
+
 
     }
    
@@ -136,14 +158,16 @@ public class UIManager : MonoBehaviour
         dialogBox2.SetActive(true);
         yield return new WaitForSeconds(timeVideoStartDialogBox22);
         isDialogBox=true;
+        okDialogBox2 = true;
+        //monMax+=1;
     }
 
     IEnumerator StopTheDialogBox2()
     {
+        Debug.Log("inside stop coroutine");
         bastaAdvise=true;
         yield return new WaitForSeconds(timeToStopDialogBox2);
         dialogBox2.SetActive(false);
-        okDialogBox2 = true;
         isDialogBox = false;
         // title.GetComponent<Animator>().SetBool("isTitle", false);
         // title.SetActive(false);

@@ -25,6 +25,7 @@ TagManager:
   - UICanvas2
   - UIManager
   - ButtonMenu
+  - Play
   layers:
   - Default
   - TransparentFX
