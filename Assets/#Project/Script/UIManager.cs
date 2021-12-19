@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public Explosion explosion;
     public PlayTheIntro playTheIntro;
     public TelevisionController televisionController;
+    public MenuGame_Manager menuGame_Manager;
 
     private float currentTime = 0;
     public float startMessage = 5.0f;
@@ -39,7 +40,7 @@ public class UIManager : MonoBehaviour
     public bool isTitled = false;
     public bool isDialogBox2 = false;
     public bool okblinking = false;
-    private int monMax=0;
+
     public bool isTelevisionFalling = false;
 
     public bool securityContinue1 = false;
@@ -51,33 +52,39 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        isTelevisionFalling = false;
-        securityContinue1 = false;
-        securityContinue2 = false;
-        securityContinue3 = false;
-        monMax = 0;
-        isDialogBox2 = false;
-        okDialogBox2 =false;
         myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
         uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
         uiAssistant2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
         //buttonMenu = GameObject.FindGameObjectWithTag("ButtonMenu");
         playTheIntro = GameObject.FindGameObjectWithTag("Play").GetComponent<PlayTheIntro>();
         continueButton = GameObject.FindGameObjectWithTag("Continue").GetComponent<ContinueButton>();
-        //buttonMenu.SetActive(true);
-        title.SetActive(false);
-        dialogBox.SetActive(false);
-        advise.SetActive(false);
-        dialogBox2.SetActive(false);
-        advise2.SetActive(false);
-        buttonContinue.SetActive(false);
+        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
+        if(menuGame_Manager.levelNow == 0)
+        {
+            isTelevisionFalling = false;
+            securityContinue1 = false;
+            securityContinue2 = false;
+            securityContinue3 = false;
+            
+            isDialogBox2 = false;
+            okDialogBox2 =false;
+            //buttonMenu.SetActive(true);
+            title.SetActive(false);
+            dialogBox.SetActive(false);
+            advise.SetActive(false);
+            dialogBox2.SetActive(false);
+            advise2.SetActive(false);
+            buttonContinue.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playTheIntro.isPlaytheIntro)
+        if(menuGame_Manager.levelNow == 0)
         {
+            if(playTheIntro.isPlaytheIntro)
+            {
             isTelevisionFalling = true;
             Debug.Log("we can start");
             currentTime += Time.deltaTime;
@@ -106,56 +113,56 @@ public class UIManager : MonoBehaviour
                     advise.SetActive(false);
                 }
             }
-        }
-        else
-        {
-            title.SetActive(false);
-            dialogBox.SetActive(false);
-            advise.SetActive(false);
-            //dialogBox2.SetActive(false);
-            //advise2.SetActive(false);
-        }
+            }
+            else
+            {
+                title.SetActive(false);
+                dialogBox.SetActive(false);
+                advise.SetActive(false);
+                //dialogBox2.SetActive(false);
+                //advise2.SetActive(false);
+            }
 
-        if(myVideoPlayer.EndTelevision && !uiAssistant2.firstPhrase2)
-        {
-            Debug.Log("inside the start continue");
-            buttonContinue.SetActive(true);
-        }
-        // else
-        // {
-        //     dialogBox2.SetActive(false);
-        //     advise2.SetActive(false);
-        //     title.SetActive(false);
-        // }
-        if(continueButton.isContinue)
-        {
-            StartCoroutine(StartStartDialogBox2());
-            StartCoroutine(StartTitle());
+            if(myVideoPlayer.EndTelevision && !uiAssistant2.firstPhrase2)
+            {
+                Debug.Log("inside the start continue");
+                buttonContinue.SetActive(true);
+            }
+            // else
+            // {
+            //     dialogBox2.SetActive(false);
+            //     advise2.SetActive(false);
+            //     title.SetActive(false);
+            // }
+            if(continueButton.isContinue)
+            {
+                StartCoroutine(StartStartDialogBox2());
+                StartCoroutine(StartTitle());
 
-            
-            //buttonContinue.SetActive(false);  
-        }
-        if(securityContinue1)
-        {
-            Debug.Log("security continue 1 "+securityContinue1);
-            advise2.SetActive(true); 
-            dialogBox2.SetActive(true);
-            //isDialogBox2 = true;
-            
-            StartCoroutine(StopTheDialogBox2());
-            
+                
+                //buttonContinue.SetActive(false);  
+            }
+            if(securityContinue1)
+            {
+                Debug.Log("security continue 1 "+securityContinue1);
+                advise2.SetActive(true); 
+                dialogBox2.SetActive(true);
+                //isDialogBox2 = true;
+                
+                StartCoroutine(StopTheDialogBox2());
+                
 
-        }
-        if(securityContinue2)
-        {
-            Debug.Log("security continue 2 "+securityContinue2);
-            title.SetActive(true);
-            title.GetComponent<Animator>().SetBool("isTitle", true);
-            isTitled = true;
-            //explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
-            //explosion.Explode();
-            //isTitled= true;
-        }
+            }
+            if(securityContinue2)
+            {
+                Debug.Log("security continue 2 "+securityContinue2);
+                title.SetActive(true);
+                title.GetComponent<Animator>().SetBool("isTitle", true);
+                isTitled = true;
+                //explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
+                //explosion.Explode();
+                //isTitled= true;
+            }
         // if(isDialogBox2)
         // {
         //     StartCoroutine(StopTheDialogBox2());
@@ -169,26 +176,28 @@ public class UIManager : MonoBehaviour
         //     dialogBox2.SetActive(false);
         //     isDialogBox2 = false;
         // }
-        if(bastaAdvise)
-        {
-            advise2.SetActive(false);
-        }
+            if(bastaAdvise)
+            {
+                advise2.SetActive(false);
+            }
 
-        if(isTelevisionFalling)
-        {
-            Debug.Log("television fallllll");
-            televisionController.StartLaunchTelevision();
+            if(isTelevisionFalling)
+            {
+                Debug.Log("television fallllll");
+                televisionController.StartLaunchTelevision();
+            }
+            if(isTitled)
+            {
+                StartCoroutine(TimeStopTitle());
+            }
+            if(securityContinue3)
+            {
+                title.SetActive(false);
+                title.GetComponent<Animator>().SetBool("isTitle", false);
+                isTitled = false;
+            }
         }
-        if(isTitled)
-        {
-            StartCoroutine(TimeStopTitle());
-        }
-        if(securityContinue3)
-        {
-            title.SetActive(false);
-            title.GetComponent<Animator>().SetBool("isTitle", false);
-            isTitled = false;
-        }
+        
     }
 
     
