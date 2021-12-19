@@ -26,6 +26,8 @@ TagManager:
   - UIManager
   - ButtonMenu
   - Play
+  - Continue
+  - Stop
   layers:
   - Default
   - TransparentFX
