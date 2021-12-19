@@ -28,6 +28,9 @@ TagManager:
   - Play
   - Continue
   - Stop
+  - leftMouse
+  - televisionAudio
+  - World
   layers:
   - Default
   - TransparentFX

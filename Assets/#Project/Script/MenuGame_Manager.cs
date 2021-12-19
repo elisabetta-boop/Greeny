@@ -77,7 +77,7 @@ public class MenuGame_Manager : MonoBehaviour
         //uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
         //uIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
-        if(Input.GetKey("escape"))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }

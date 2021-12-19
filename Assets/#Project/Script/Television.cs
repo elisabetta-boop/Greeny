@@ -14,8 +14,11 @@ public class Television : MonoBehaviour
     
     private Renderer colorCube;
     public UnityEvent whenLightUp;
-
+    public AudioSource boomTelevision;
     public MyVideoPlayer myVideo;
+    public float timeSoundTelevision=1.5f;
+    public bool isBoom = false;
+    public bool restartMusic = false;
 
     
     
@@ -37,6 +40,18 @@ public class Television : MonoBehaviour
         {
             whenLightUp?.Invoke();
         }
+        // else if (other.CompareTag("World"))
+        // {
+        //     Debug.Log("is trigger the world? " + other);
+        //     isBoom = true;
+        //     boomTelevision.Play();
+        //     StartCoroutine(RestartSoundMusic());
+        // }
         }
+    // IEnumerator RestartSoundMusic()
+    // {
+    //     yield return new WaitForSeconds(timeSoundTelevision);
+    //     restartMusic = true;
+    // }
    
 }

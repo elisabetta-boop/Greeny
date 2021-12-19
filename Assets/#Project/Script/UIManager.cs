@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     //public GameObject buttonMenu;
     public GameObject buttonContinue;
     public ContinueButton continueButton;
+    public Exit exit;
     public MyVideoPlayer myVideoPlayer;
     public UI_Assistant uiAssistant;
     public UI_Assistant2 uiAssistant2;
@@ -77,12 +78,12 @@ public class UIManager : MonoBehaviour
     {
         if(playTheIntro.isPlaytheIntro)
         {
+            isTelevisionFalling = true;
             Debug.Log("we can start");
             currentTime += Time.deltaTime;
             if (currentTime >= startMessage)
             {
                 dialogBox.SetActive(true);
-                isTelevisionFalling = true;
                 //ici television launch
                 
                 if(myVideoPlayer.TelevisionAnimation)
@@ -140,6 +141,9 @@ public class UIManager : MonoBehaviour
             advise2.SetActive(true); 
             dialogBox2.SetActive(true);
             //isDialogBox2 = true;
+            
+            StartCoroutine(StopTheDialogBox2());
+            
 
         }
         if(securityContinue2)
@@ -147,6 +151,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("security continue 2 "+securityContinue2);
             title.SetActive(true);
             title.GetComponent<Animator>().SetBool("isTitle", true);
+            isTitled = true;
             //explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
             //explosion.Explode();
             //isTitled= true;
@@ -159,15 +164,30 @@ public class UIManager : MonoBehaviour
         // {
         //     StartCoroutine(TimeStopTitle());
         // }
-        // if(bastaAdvise)
+        // if(okDialogBox2)
         // {
-        //     advise2.SetActive(false);
+        //     dialogBox2.SetActive(false);
+        //     isDialogBox2 = false;
         // }
+        if(bastaAdvise)
+        {
+            advise2.SetActive(false);
+        }
 
         if(isTelevisionFalling)
         {
             Debug.Log("television fallllll");
             televisionController.StartLaunchTelevision();
+        }
+        if(isTitled)
+        {
+            StartCoroutine(TimeStopTitle());
+        }
+        if(securityContinue3)
+        {
+            title.SetActive(false);
+            title.GetComponent<Animator>().SetBool("isTitle", false);
+            isTitled = false;
         }
     }
 
@@ -192,7 +212,7 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeVideoStartDialogBox2);
         securityContinue1 = true;
-        okDialogBox2 = true;
+        
         bastaAdvise = true;
 
         // advise2.SetActive(true); 
@@ -208,9 +228,11 @@ public class UIManager : MonoBehaviour
         
         //bastaAdvise=true;
         yield return new WaitForSeconds(timeToStopDialogBox2);
-        dialogBox2.SetActive(false);
+        okDialogBox2 = true;
+        
+        //dialogBox2.SetActive(false);
         //isDialogBox = false;
-        okDialogBox2= false;
+        //okDialogBox2= false;
         // title.GetComponent<Animator>().SetBool("isTitle", false);
         // title.SetActive(false);
         // monMax2+=1;
@@ -229,9 +251,10 @@ public class UIManager : MonoBehaviour
     IEnumerator TimeStopTitle()
     {
         yield return new WaitForSeconds(timeStopTitle);
-        title.SetActive(false);
-        title.GetComponent<Animator>().SetBool("isTitle", false);
-        isTitled = false;
+        // title.SetActive(false);
+        // title.GetComponent<Animator>().SetBool("isTitle", false);
+        //isTitled = false;
+        securityContinue3 = true;
 
     }    
 }

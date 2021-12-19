@@ -7,8 +7,15 @@ public class MusicController : MonoBehaviour
 
     public MyVideoPlayer myVideoPlayer;
     public AudioSource myAudioSource;
+    public AudioSource televisionFallingBoom;
+    public TelevisionController televisionController;
+    
+    public Television television;
     public bool isPlaying=false;
     public bool isChangingMusique=false;
+    public float timeFallingBoom = 2.0f;
+    public float timeSTopAfterFallingBoom= 2.0f;
+    public bool isRestarted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +23,10 @@ public class MusicController : MonoBehaviour
         isPlaying =true;
         isChangingMusique = false;
         myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
+        televisionFallingBoom = GameObject.FindGameObjectWithTag("televisionAudio").GetComponent<AudioSource>();
+        televisionController = GameObject.FindGameObjectWithTag("televisionAudio").GetComponent<TelevisionController>();
+        television = GameObject.Find("TV_low").GetComponent<Television>();
+        
     }
 
     // Update is called once per frame
@@ -27,31 +38,32 @@ public class MusicController : MonoBehaviour
             Debug.Log("ciao musica");
             myAudioSource.Stop();
         }
-        else if (myVideoPlayer.EndTelevision)
+        if (myVideoPlayer.EndTelevision)
         {
             myAudioSource.Play();
         }
-        // if(isPlaying && !isChangingMusique)
-        // {
-        //     myAudioSource.Play();
-        // }
-        // else if(!isPlaying && isChangingMusique)
+        // if(televisionController.isBoom)
         // {
         //     myAudioSource.Stop();
         // }
-
-        // if (myVideoPlayer.startVideo)
+        // if(televisionController.okRestart)
         // {
-        //     //myAudioSource.Stop();
-        //     Debug.Log("come mai");
-        //     isChangingMusique = true;
-        //     isPlaying = false;
+        //     myAudioSource.Play();
         // }
-        // if (myVideoPlayer.EndTelevision)
-        // {
-        //     //myAudioSource.Play();
-        //     isChangingMusique= false;
-        //     isPlaying = true;
-        // }
+        
     }
+        // IEnumerator StopTheMusic()
+        // {
+        //     yield return new WaitForSeconds(timeFallingBoom);
+        //     myAudioSource.Stop();
+        //     televisionFallingBoom.Play();
+        //     isRestarted=true;
+        // }
+        // IEnumerator RestartTheMusic()
+        // {
+        //     //televisionFallingBoom.Play();
+        //     yield return new WaitForSeconds(timeSTopAfterFallingBoom);
+        //     myAudioSource.Play();
+        // } 
+
 }
