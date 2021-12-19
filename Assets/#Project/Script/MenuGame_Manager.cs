@@ -23,6 +23,7 @@ public class MenuGame_Manager : MonoBehaviour
     public bool theSceneIsStarted = false;
     public TelevisionController televisionController;
     public NewPlayerZeroTransformation newPlayerZeroTransformation;
+    public UIManager uIManager;
     public float timeToMessage = 0.1f;
     
 
@@ -40,7 +41,7 @@ public class MenuGame_Manager : MonoBehaviour
             playerZero = Instantiate(PlayerPrefabZero[0],StartPos,Quaternion.identity);
             
 
-            televisionController.StartLaunchTelevision();
+            //televisionController.StartLaunchTelevision();
             //coroutine pour television
             //televisionController.TVanimator.SetBool("sceneStart", true);  
         }
@@ -74,6 +75,8 @@ public class MenuGame_Manager : MonoBehaviour
         //     Debug.Log("newPlayerZeroTransformation ok"+newPlayerZeroTransformation);
         // }    
         //uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
+        //uIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+
         if(Input.GetKey("escape"))
         {
             Application.Quit();
@@ -91,6 +94,11 @@ public class MenuGame_Manager : MonoBehaviour
     
     void Update()
     {
+        // Debug.Log("is falling? " + uIManager.isTelevisionFalling);
+        // if(uIManager.isTelevisionFalling)
+        // {
+        //     televisionController.StartLaunchTelevision();
+        // }
         // if(canvasMessageStart == null)
         // {
         //     Invoke("canvasMessageStart.StartMessage", 2.0f);

@@ -2568,7 +2568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuGame: {fileID: 1707510626}
   TVanimator: {fileID: 428641728}
-  timeToTelevision: 10
+  timeToTelevision: 5
 --- !u!1 &471457217
 GameObject:
   m_ObjectHideFlags: 0
@@ -8641,6 +8641,7 @@ MonoBehaviour:
   uiAssistant2: {fileID: 2109696129}
   explosion: {fileID: 321707279}
   playTheIntro: {fileID: 654953100}
+  televisionController: {fileID: 1446976039}
   startMessage: 5
   startMessage2: 1
   startTitle: 1
@@ -8659,6 +8660,7 @@ MonoBehaviour:
   isTitled: 0
   isDialogBox2: 0
   okblinking: 0
+  isTelevisionFalling: 0
   securityContinue1: 0
   securityContinue2: 0
   securityContinue3: 0
@@ -13594,6 +13596,7 @@ MonoBehaviour:
   theSceneIsStarted: 0
   televisionController: {fileID: 1446976039}
   newPlayerZeroTransformation: {fileID: 8730847660460158932, guid: 059d09c26592a7845aa7deb931f156ba, type: 3}
+  uIManager: {fileID: 662259420}
   timeToMessage: 1
   timer: 2
 --- !u!4 &1707510627

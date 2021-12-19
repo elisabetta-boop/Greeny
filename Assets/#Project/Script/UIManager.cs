@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public UI_Assistant2 uiAssistant2;
     public Explosion explosion;
     public PlayTheIntro playTheIntro;
+    public TelevisionController televisionController;
 
     private float currentTime = 0;
     public float startMessage = 5.0f;
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
     public bool isDialogBox2 = false;
     public bool okblinking = false;
     private int monMax=0;
+    public bool isTelevisionFalling = false;
 
     public bool securityContinue1 = false;
     public bool securityContinue2 = false;
@@ -48,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        isTelevisionFalling = false;
         securityContinue1 = false;
         securityContinue2 = false;
         securityContinue3 = false;
@@ -79,6 +82,9 @@ public class UIManager : MonoBehaviour
             if (currentTime >= startMessage)
             {
                 dialogBox.SetActive(true);
+                isTelevisionFalling = true;
+                //ici television launch
+                
                 if(myVideoPlayer.TelevisionAnimation)
                 {
                     dialogBox.SetActive(false);
@@ -157,6 +163,12 @@ public class UIManager : MonoBehaviour
         // {
         //     advise2.SetActive(false);
         // }
+
+        if(isTelevisionFalling)
+        {
+            Debug.Log("television fallllll");
+            televisionController.StartLaunchTelevision();
+        }
     }
 
     
