@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileHighlight : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
+    public MeshRenderer meshRenderer;
     private MeshRenderer meshRenderer2;
     private Material originalMaterial;
     

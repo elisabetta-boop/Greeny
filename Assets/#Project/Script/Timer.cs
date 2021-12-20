@@ -11,12 +11,14 @@ public class Timer : MonoBehaviour
     public Text timeText;
     public bool isBlinking = false;
     public Blink blink;
+    public PlayerManager playerManager;
     
     // Start is called before the first frame update
     void Start()
     {
         timerIsRunning = true;
         blink = GetComponent<Blink>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -75,7 +77,11 @@ public class Timer : MonoBehaviour
                 timeRemaining =0;
                 timerIsRunning = false;
             }
-    }
+        }
+        else{
+            playerManager.ToDie();
+            Debug.Log("inside the Timer");
+        }
     }
     public void DisplayTime(float timeToDisplay)
     {
@@ -90,7 +96,7 @@ public class Timer : MonoBehaviour
         
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        float milliSeconds = timeToDisplay %1*1000;
-        timeText.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds,milliSeconds);
+        //float milliSeconds = timeToDisplay %1*1000;
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);//milliSeconds);
     }  
 }

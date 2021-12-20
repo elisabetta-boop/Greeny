@@ -54,6 +54,7 @@ public class GrizzyHealth : MonoBehaviour
         print((pool == null) + " pool");
         print((grizzy == null) + " grizzy");
         pool.Kill(grizzy);
+        grizzy.audioSource.Stop();
     }
 
     // float CalculateHealth()

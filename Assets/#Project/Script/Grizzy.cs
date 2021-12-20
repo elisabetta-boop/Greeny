@@ -18,6 +18,7 @@ public class Grizzy : MonoBehaviour
     
     void Start()
     {
+        
         agent = GetComponent<NavMeshAgent>();
         agent.avoidancePriority = Random.Range(1,100);
         agent.speed = Random.Range(1f,6f);
@@ -33,6 +34,7 @@ public class Grizzy : MonoBehaviour
         {
             Debug.LogError("There is no playerManager in your scene");
         } 
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -59,10 +61,7 @@ public class Grizzy : MonoBehaviour
             Debug.Log("Grizzy touch Greeny");
             playerManager.GreenyDamage(50f);
         }
-        if(other.CompareTag("Bullet"))
-        {
-            audioSource.Play();
-        }
+        
     }
     private void NextDestination()
     {

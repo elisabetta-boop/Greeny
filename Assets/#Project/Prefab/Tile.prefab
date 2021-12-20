@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3b05f51b0ce5f4c9b0b6b4525c20d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 9085561844104198784}
   originalMaterial2: {fileID: 2100000, guid: 732ab5f17ad9bd64dab00d77b745453f, type: 2}
   highLightMaterial: {fileID: 2100000, guid: dfc03e46fa5ab7442a131ad96737093d, type: 2}
   timeHighlight: 3

@@ -12,12 +12,15 @@ public class PlayerManager : MonoBehaviour
     public GameObject player;
     public Slider healthBar;
     //public GameObject healthBarUIGreeny;
-    public bool dead;
+    public bool dead= false;
     public float smoothing = 5;
     public UnityEvent whenDie;
+    public float timeToDie=2.0f;
+    public bool isGameOver;
 
     void Awake()
     {
+        dead= false;
         if(healthBar == null)
         {
             // healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
@@ -73,6 +76,10 @@ public class PlayerManager : MonoBehaviour
         {
             healthBar.value = Mathf.Lerp(healthBar.value, health, smoothing*Time.deltaTime);
         }
+        if(dead)
+        {
+            whenDie?.Invoke();
+        }
     }
     public void GreenyDamage(float amount)
     {
@@ -87,8 +94,19 @@ public class PlayerManager : MonoBehaviour
         {
             health = 0;
             Debug.Log("GAME OVER");
-            whenDie?.Invoke();
-            dead = true;
+            ToDie();
+            
         }
+    }
+
+    public void ToDie()
+    {
+        StartCoroutine(DieCouroutine());
+        isGameOver = true;
+    }
+    IEnumerator DieCouroutine()
+    {
+        yield return new WaitForSeconds(timeToDie);
+        dead = true;
     }
 }

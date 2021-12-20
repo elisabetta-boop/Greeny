@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
 
     public float miao;
     public float bau;
+    public bool isWinning;
 
 
 
@@ -47,6 +48,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        isWinning = false;
         row = PlayerPrefs.GetInt("row", CubeRow);
         col = PlayerPrefs.GetInt("col", CubeCol);
 
@@ -104,10 +106,11 @@ public class LevelManager : MonoBehaviour
         {
             //Debug.Log("one for the win");
         }
-        if (greenColored.Count == cubicWorldi)
+        Debug.Log("how many green tiles: " + greenColored.Count);
+        if (greenColored.Count == cubicWorldi || greenColored.Count == (cubicWorldi-1))
         {
             Debug.Log("winnnnnnnnn");
-            Win();
+            StartCoroutine(PassToWin());
         }
     }
     public void changeColorTile(int id)
@@ -147,8 +150,10 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator PassToWin()
     {
+        isWinning = true;
         sphereMenuZeroBehaviour.okAnimSphere = false;
         yield return new WaitForSeconds(timeToWin);
+        Win();
     }
     public void Win()
     {

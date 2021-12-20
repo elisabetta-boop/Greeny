@@ -91,7 +91,7 @@ public class BulletController : MonoBehaviour
                 }
                 else{
                     mySplat = GameObject.Instantiate(bulletDecal, contact.point + contact.normal *0.0001f,Quaternion.LookRotation(contact.normal));
-                    worldAttitude.BulletAmbientSound();
+                    //worldAttitude.BulletAmbientSound();
                     Destroy(gameObject);
                     //StartCoroutine(ScaleOverTime(1));
                 }

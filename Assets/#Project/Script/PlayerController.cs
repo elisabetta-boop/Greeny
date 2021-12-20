@@ -198,15 +198,15 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag == "Grizzy")
-        {
-            audioSource.clip =deathSound;
-            audioSource.Play();
+    // void OnCollisionEnter(Collision other)
+    // {
+    //     if(other.gameObject.tag == "Grizzy")
+    //     {
+    //         audioSource.clip =deathSound;
+    //         audioSource.Play();
 
-        }
-    }
+    //     }
+    // }
     
     
 }

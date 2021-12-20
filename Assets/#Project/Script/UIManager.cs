@@ -27,11 +27,11 @@ public class UIManager : MonoBehaviour
     public MenuGame_Manager menuGame_Manager;
 
     private float currentTime = 0;
-    public float startMessage = 5.0f;
+    public float startMessage = 3.0f;
     public float startMessage2 = 1.0f;
     public float startTitle= 1.0f;
     public float timeTostopTitle = 4.0f;
-    public float timeToAdvise= 5.1f;
+    public float timeToAdvise= 4.1f;
     public float timeBlinkAdvise = 2.0f;
     public float timeToStopDialogBox = 2.0f;
     public float timeVideoStartDialogBox2 = 5.0f;
@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
             okDialogBox2 =false;
             //buttonMenu.SetActive(true);
             title.SetActive(false);
-            dialogBox.SetActive(false);
+            //dialogBox.SetActive(false);
             advise.SetActive(false);
             dialogBox2.SetActive(false);
             advise2.SetActive(false);
@@ -108,98 +108,65 @@ public class UIManager : MonoBehaviour
         {
             if(playTheIntro.isPlaytheIntro)// && isTelevisionFalling != null)
             {
-                isTelevisionFalling = true;
-                Debug.Log("television fallllll");
-                televisionController.StartLaunchTelevision();
-                Debug.Log("we can start");
-                currentTime += Time.deltaTime;
-                if (currentTime >= startMessage)// && !myVideoPlayer.TelevisionAnimation)
-                {
-                    dialogBox.SetActive(true);
-                    buttonContinue.SetActive(true);
-                    //ici television launch
-                    
-                    // if(myVideoPlayer.TelevisionAnimation)
-                    // {
-                    //     dialogBox.SetActive(false);
-                    //     advise.SetActive(false);
-                    //     //buttonMenu.SetActive(false);
-                    // }
-                }
-                else{
-                    dialogBox.SetActive(false);
-                    //advise.SetActive(false);
-                }
-                if(currentTime>= timeToAdvise)
-                {
-                    if(advise!=null && !uiAssistant.firstPhrase && !okblinking )//&& !myVideoPlayer.TelevisionAnimation)
-                    {
-                        advise.SetActive(true);
-                        
-                        StartCoroutine(BlinkAdvise());  
-                    }
-                    else
-                    {
-                        advise.SetActive(false);
-                    }
-                }
-                if(continueButton.isContinue)
-                {
-                    dialogBox.SetActive(false);
-                    StartCoroutine(StartStartDialogBox2());
-                    StartCoroutine(StartTitle());
-                    
-                    //buttonContinue.SetActive(false);  
-                    if(securityContinue1)
-                    {
-                        Debug.Log("security continue 1 "+securityContinue1);
-                        advise2.SetActive(true); 
-                        dialogBox2.SetActive(true);
-                        //isDialogBox2 = true;
-                        
-                        StartCoroutine(StopTheDialogBox2());
-                    }
-                    
-                    else if(securityContinue2)
-                    {
-                        Debug.Log("security continue 2 "+securityContinue2);
-                        title.SetActive(true);
-                        title.GetComponent<Animator>().SetBool("isTitle", true);
-                        StartCoroutine(TimeStopTitle());
-                        isTitled = true;
-                        explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
-                        explosion.Explode();
-                        
-                    }
-                
-                    else if(bastaAdvise)
-                    {
-                        advise2.SetActive(false);
-                    }   
-                
-                    else if(securityContinue3)
-                    {
-                        title.SetActive(false);
-                        title.GetComponent<Animator>().SetBool("isTitle", false);
-                        isTitled = false;
-                    }
-                    
-                }
-                if(stopButton.isStop)
-                {
-                    title.SetActive(false);
-                    dialogBox.SetActive(false);
-                    advise.SetActive(false);
-                    dialogBox2.SetActive(false);
-                    advise2.SetActive(false);
-                }
+                MenuZeroConditionsIntro();
             }
+
+            else if(continueButton.isContinue)
+            {
+                dialogBox.SetActive(false);
+
+                MenuZeroContinueConditions();
+            }
+        
+            if(securityContinue1)
+            {
+                Debug.Log("security continue 1 "+securityContinue1);
+                advise2.SetActive(true); 
+                dialogBox2.SetActive(true);
+                //isDialogBox2 = true;
+                
+                StartCoroutine(StopTheDialogBox2());
+            }
+            
+            else if(securityContinue2)
+            {
+                Debug.Log("security continue 2 "+securityContinue2);
+                title.SetActive(true);
+                title.GetComponent<Animator>().SetBool("isTitle", true);
+                StartCoroutine(TimeStopTitle());
+                isTitled = true;
+                explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
+                explosion.Explode();
+            }
+                    
+            else if(bastaAdvise)
+            {
+                advise2.SetActive(false);
+            }   
+        
+            else if(securityContinue3)
+            {
+                title.SetActive(false);
+                title.GetComponent<Animator>().SetBool("isTitle", false);
+                isTitled = false;
+            }
+                        
+                    
+            else if(stopButton.isStop)
+            {
+                title.SetActive(false);
+                dialogBox.SetActive(false);
+                advise.SetActive(false);
+                dialogBox2.SetActive(false);
+                advise2.SetActive(false);
+            }
+    
                
 
-        } 
+        
         if(menuGame_Manager.levelNow == 10)
         {
-            
+                
             isGameOver = true;
             if(gameOverTitle.okAnim)
             {
@@ -211,11 +178,11 @@ public class UIManager : MonoBehaviour
             {
                 gameOverGameObjectTitle.SetActive(false);
             }
-        }
+            }
         else
         {
             title.SetActive(false);
-            dialogBox.SetActive(false);
+            //dialogBox.SetActive(false);
             advise.SetActive(false);
             dialogBox2.SetActive(false);
             advise2.SetActive(false);
@@ -230,7 +197,51 @@ public class UIManager : MonoBehaviour
         //     // }
         // }
     }
-
+    }
+    public void MenuZeroConditionsIntro()
+    {
+        isTelevisionFalling = true;
+        Debug.Log("television fallllll");
+        televisionController.StartLaunchTelevision();
+        Debug.Log("we can start");
+                
+        currentTime += Time.deltaTime;
+        if (currentTime >= startMessage)// && !myVideoPlayer.TelevisionAnimation)
+        {
+            dialogBox.SetActive(true);
+            buttonContinue.SetActive(true);
+            //ici television launch
+            
+            // if(myVideoPlayer.TelevisionAnimation)
+            // {
+            //     dialogBox.SetActive(false);
+            //     advise.SetActive(false);
+            //     //buttonMenu.SetActive(false);
+            // }
+        }
+        
+        else if(currentTime>= timeToAdvise)
+        {
+            if(advise!=null && !uiAssistant.firstPhrase && !okblinking )//&& !myVideoPlayer.TelevisionAnimation)
+            {
+                advise.SetActive(true);
+                
+                StartCoroutine(BlinkAdvise());  
+            }
+            else
+            {
+                advise.SetActive(false);
+            }
+        }
+    }
+    public void MenuZeroContinueConditions()
+    {
+        StartCoroutine(StartStartDialogBox2());
+        StartCoroutine(StartTitle());
+        
+        //buttonContinue.SetActive(false);  
+        
+    }
     
             
         
