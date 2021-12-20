@@ -2069,5 +2069,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereMenuZero
       objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 56237367}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Scene_Changer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MenuZero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+      propertyPath: whenHitSphereMenuZero.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}

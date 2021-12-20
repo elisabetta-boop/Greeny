@@ -27,6 +27,7 @@ public class Tile_Behaviour : MonoBehaviour
     public Grizzy grizzy;
     public TileHighlight tileHighlight;
     //public Animator falledTile;
+    public AudioSource audioSource;
 
             
     void Start()
@@ -53,7 +54,7 @@ public class Tile_Behaviour : MonoBehaviour
         }
         else if (other.CompareTag("Bullet"))
         {
-            
+            audioSource.Play();
             positionTile = this.transform.position;
             //Debug.Log("tile vector3");
             //Debug.Log(positionTile); ////ne marche passssss!!!

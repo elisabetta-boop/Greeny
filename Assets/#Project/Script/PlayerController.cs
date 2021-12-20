@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     Vector2 currentAnimationBlendVector;
     Vector2 animationVelocity;
+    private AudioClip deathSound;
+    public AudioSource audioSource;
     
     private void Awake()
     {
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        deathSound = (AudioClip)Resources.Load("deathSound");
         playerManager = GetComponent<PlayerManager>();
         
         if(paintFuelManager == null)
@@ -122,7 +125,10 @@ public class PlayerController : MonoBehaviour
             bulletController.hit = false;
         }
         animator.CrossFade(RecoilAnimation, animationPlayerTransition);
+
     }
+
+    
     private void MegaShootGun()
     {
 
@@ -189,6 +195,17 @@ public class PlayerController : MonoBehaviour
         //rotation
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y,0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Grizzy")
+        {
+            audioSource.clip =deathSound;
+            audioSource.Play();
+
+        }
     }
     
     

@@ -12,6 +12,7 @@ public class Grizzy : MonoBehaviour
     private float distanceGrizzyTile;
     private Pool pool;
     public PlayerManager playerManager;
+    public AudioSource audioSource;
     
     
     
@@ -57,6 +58,10 @@ public class Grizzy : MonoBehaviour
         {
             Debug.Log("Grizzy touch Greeny");
             playerManager.GreenyDamage(50f);
+        }
+        if(other.CompareTag("Bullet"))
+        {
+            audioSource.Play();
         }
     }
     private void NextDestination()

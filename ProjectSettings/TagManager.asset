@@ -33,6 +33,7 @@ TagManager:
   - World
   - GameOverTitle
   - SphereMenuZero
+  - Ambient
   layers:
   - Default
   - TransparentFX

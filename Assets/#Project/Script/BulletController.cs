@@ -7,6 +7,10 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField]
     private GameObject bulletDecal;
+    public PlayerManager playerManager;
+    public AudioSource audioSource;
+    public WorldAttitude worldAttitude;
+    
     private float speed =50f;
     private float TimeToDestroy = 0.5f;
     public Vector3 target {get;set;}
@@ -14,6 +18,7 @@ public class BulletController : MonoBehaviour
     private Animator A;
     public float timeToSplat=2;
     public UnityEvent whenHitGrizzy;
+   
 
     public GameObject splatBlood;
     public LayerMask layerShoot;
@@ -25,7 +30,9 @@ public class BulletController : MonoBehaviour
     void start (){
         A = GetComponent <Animator> ();
         A.enabled = false;
-
+        playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
+        worldAttitude = GameObject.FindGameObjectWithTag("Ambient").GetComponent<WorldAttitude>();
+        
     }
     private void OnEnable()
     {
@@ -51,6 +58,20 @@ public class BulletController : MonoBehaviour
                 GameObject myBullet = GameObject.Instantiate(splatBlood, contact.point + contact.normal *0.0001f,Quaternion.LookRotation(other.transform.up));
                 Destroy(myBullet,0.5f);
             }
+            else if( other.gameObject.tag == "Tile")
+            {
+                //audioSource.Play();
+            }
+            // else if(other.gameObject.tag == "Ambient")
+            // {
+
+            // }
+            
+            else if (other.gameObject.tag == "HealthSphere")
+            {
+                playerManager.health +=20;
+                
+            }
             //print(other.gameObject.name);
             //if (other.gameObject.CompareTag("Player"))
             if(layerShoot == (layerShoot | (1 << other.gameObject.layer)))
@@ -70,6 +91,7 @@ public class BulletController : MonoBehaviour
                 }
                 else{
                     mySplat = GameObject.Instantiate(bulletDecal, contact.point + contact.normal *0.0001f,Quaternion.LookRotation(contact.normal));
+                    worldAttitude.BulletAmbientSound();
                     Destroy(gameObject);
                     //StartCoroutine(ScaleOverTime(1));
                 }

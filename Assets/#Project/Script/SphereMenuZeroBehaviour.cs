@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class SphereMenuZeroBehaviour : MonoBehaviour
 {
     public Animator sphereAnim;
     
     public bool okAnimSphere=false;
-
+     public UnityEvent whenHitSphereMenuZero;
 
     private void Awake()
     {
@@ -24,7 +24,22 @@ public class SphereMenuZeroBehaviour : MonoBehaviour
         {
             sphereAnim.SetTrigger("isSphereMenuZero");
         }
-        
+
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        ContactPoint contact = other.GetContact(0);
+
+        if (other.gameObject.tag == "Bullet")
+        {
+            
+            MenuZeroRetour();
+        }
+    }
+
+    public void MenuZeroRetour()
+    {
+        whenHitSphereMenuZero?.Invoke();
     }
 
     // Update is called once per frame
