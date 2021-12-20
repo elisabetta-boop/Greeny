@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-
+    public MenuGame_Manager menuGame_Manager;
     public MyVideoPlayer myVideoPlayer;
     public AudioSource myAudioSource;
     public AudioSource televisionFallingBoom;
@@ -17,30 +17,41 @@ public class MusicController : MonoBehaviour
     public float timeSTopAfterFallingBoom= 2.0f;
     public bool isRestarted = false;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
+        
+    }
     void Start()
     {
-        myAudioSource = GetComponent<AudioSource>();
-        isPlaying =true;
-        isChangingMusique = false;
-        myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
-        televisionFallingBoom = GameObject.FindGameObjectWithTag("televisionAudio").GetComponent<AudioSource>();
-        televisionController = GameObject.FindGameObjectWithTag("televisionAudio").GetComponent<TelevisionController>();
-        television = GameObject.Find("TV_low").GetComponent<Television>();
+        if(menuGame_Manager.levelNow==0)
+        {
+            myAudioSource = GetComponent<AudioSource>();
+            isPlaying =true;
+            isChangingMusique = false;
+            myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
+            televisionFallingBoom = GameObject.FindGameObjectWithTag("televisionAudio").GetComponent<AudioSource>();
+            televisionController = GameObject.FindGameObjectWithTag("televisionAudio").GetComponent<TelevisionController>();
+            television = GameObject.Find("TV_low").GetComponent<Television>();
+        }
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(menuGame_Manager.levelNow ==1)
+        {
+            if(myVideoPlayer.TelevisionAnimation)
+            {
+                Debug.Log("ciao musica");
+                myAudioSource.Stop();
+            }
+            if (myVideoPlayer.EndTelevision)
+            {
+                myAudioSource.Play();
+            }
 
-        if(myVideoPlayer.TelevisionAnimation)
-        {
-            Debug.Log("ciao musica");
-            myAudioSource.Stop();
-        }
-        if (myVideoPlayer.EndTelevision)
-        {
-            myAudioSource.Play();
         }
         // if(televisionController.isBoom)
         // {

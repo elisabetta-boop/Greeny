@@ -26,6 +26,7 @@ public class MenuGame_Manager : MonoBehaviour
     public UIManager uIManager;
     public float timeToMessage = 0.1f;
     
+    
 
     public  float timer = 2.0f;
     
@@ -56,6 +57,13 @@ public class MenuGame_Manager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             instance= this;
             playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
+             
+        }
+        if (instance==null && levelNow == 10)
+        {
+            // //DontDestroyOnLoad(gameObject);
+            // instance= this;
+            // playerZero = Instantiate(PlayerPrefabZero[1],StartPos,Quaternion.identity);
              
         }
         else

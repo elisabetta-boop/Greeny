@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     //public GameObject healthBarUIGreeny;
     public bool dead;
     public float smoothing = 5;
-    
+    public UnityEvent whenDie;
 
     void Awake()
     {
@@ -85,6 +87,7 @@ public class PlayerManager : MonoBehaviour
         {
             health = 0;
             Debug.Log("GAME OVER");
+            whenDie?.Invoke();
             dead = true;
         }
     }

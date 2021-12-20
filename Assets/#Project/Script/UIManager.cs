@@ -6,6 +6,9 @@ public class UIManager : MonoBehaviour
 {
     public GameObject dialogBox;
     public GameObject title;
+    public GameObject gameOverGameObjectTitle;
+    public GameOverTitle gameOverTitle;
+    
     public GameObject advise;
     public GameObject advise2;
     public GameObject dialogBox2;
@@ -46,14 +49,23 @@ public class UIManager : MonoBehaviour
     public bool okblinking = false;
 
     public bool isTelevisionFalling = false;
+    public bool isGameOver = false;
 
     public bool securityContinue1 = false;
     public bool securityContinue2 = false;
     public bool securityContinue3 = false;
+    public bool securityContinue4 = false;
+
+    public Animator gameOverAnimator;
     
     private void Awake()
     {
-        myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
+        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
+        if(menuGame_Manager.levelNow == 0)
+        {
+            myVideoPlayer = GameObject.FindGameObjectWithTag("Television").GetComponent<MyVideoPlayer>();
+
+        }
         
     }
 
@@ -61,14 +73,13 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
-        uiAssistant2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
-        //buttonMenu = GameObject.FindGameObjectWithTag("ButtonMenu");
-        playTheIntro = GameObject.FindGameObjectWithTag("Play").GetComponent<PlayTheIntro>();
-        continueButton = GameObject.FindGameObjectWithTag("Continue").GetComponent<ContinueButton>();
-        menuGame_Manager = GameObject.FindGameObjectWithTag("MenuGame").GetComponent<MenuGame_Manager>();
         if(menuGame_Manager.levelNow == 0)
         {
+            uiAssistant = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<UI_Assistant>();
+            uiAssistant2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
+            //buttonMenu = GameObject.FindGameObjectWithTag("ButtonMenu");
+            playTheIntro = GameObject.FindGameObjectWithTag("Play").GetComponent<PlayTheIntro>();
+            continueButton = GameObject.FindGameObjectWithTag("Continue").GetComponent<ContinueButton>();
             isTelevisionFalling = false;
             securityContinue1 = false;
             securityContinue2 = false;
@@ -83,8 +94,11 @@ public class UIManager : MonoBehaviour
             dialogBox2.SetActive(false);
             advise2.SetActive(false);
             buttonContinue.SetActive(false);
-            
-    }
+        }
+        if(menuGame_Manager.levelNow == 10)
+        {
+            gameOverTitle = GameObject.FindGameObjectWithTag("GameOverTitle").GetComponent<GameOverTitle>();
+        }
     }
 
     // Update is called once per frame
@@ -129,61 +143,75 @@ public class UIManager : MonoBehaviour
                         advise.SetActive(false);
                     }
                 }
+                if(continueButton.isContinue)
+                {
+                    dialogBox.SetActive(false);
+                    StartCoroutine(StartStartDialogBox2());
+                    StartCoroutine(StartTitle());
+                    
+                    //buttonContinue.SetActive(false);  
+                    if(securityContinue1)
+                    {
+                        Debug.Log("security continue 1 "+securityContinue1);
+                        advise2.SetActive(true); 
+                        dialogBox2.SetActive(true);
+                        //isDialogBox2 = true;
+                        
+                        StartCoroutine(StopTheDialogBox2());
+                    }
+                    
+                    else if(securityContinue2)
+                    {
+                        Debug.Log("security continue 2 "+securityContinue2);
+                        title.SetActive(true);
+                        title.GetComponent<Animator>().SetBool("isTitle", true);
+                        StartCoroutine(TimeStopTitle());
+                        isTitled = true;
+                        explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
+                        explosion.Explode();
+                        
+                    }
+                
+                    else if(bastaAdvise)
+                    {
+                        advise2.SetActive(false);
+                    }   
+                
+                    else if(securityContinue3)
+                    {
+                        title.SetActive(false);
+                        title.GetComponent<Animator>().SetBool("isTitle", false);
+                        isTitled = false;
+                    }
+                    
+                }
+                if(stopButton.isStop)
+                {
+                    title.SetActive(false);
+                    dialogBox.SetActive(false);
+                    advise.SetActive(false);
+                    dialogBox2.SetActive(false);
+                    advise2.SetActive(false);
+                }
             }
                
 
-            if(continueButton.isContinue)
+        } 
+        if(menuGame_Manager.levelNow == 10)
+        {
+            
+            isGameOver = true;
+            if(gameOverTitle.okAnim)
             {
-                dialogBox.SetActive(false);
-                StartCoroutine(StartStartDialogBox2());
-                StartCoroutine(StartTitle());
-                
-                //buttonContinue.SetActive(false);  
-                if(securityContinue1)
-                {
-                    Debug.Log("security continue 1 "+securityContinue1);
-                    advise2.SetActive(true); 
-                    dialogBox2.SetActive(true);
-                    //isDialogBox2 = true;
-                    
-                    StartCoroutine(StopTheDialogBox2());
-                }
-                
-                else if(securityContinue2)
-                {
-                    Debug.Log("security continue 2 "+securityContinue2);
-                    title.SetActive(true);
-                    title.GetComponent<Animator>().SetBool("isTitle", true);
-                    StartCoroutine(TimeStopTitle());
-                    isTitled = true;
-                    explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
-                    explosion.Explode();
-                    
-                }
-            
-                else if(bastaAdvise)
-                {
-                    advise2.SetActive(false);
-                }   
-            
-                else if(securityContinue3)
-                {
-                    title.SetActive(false);
-                    title.GetComponent<Animator>().SetBool("isTitle", false);
-                    isTitled = false;
-                }
+                Debug.Log("ok stop game over anim");
+                StartCoroutine(TimeStopGameOverTitle());
                 
             }
-            if(stopButton.isStop)
+            if(securityContinue4)
             {
-                title.SetActive(false);
-                dialogBox.SetActive(false);
-                advise.SetActive(false);
-                dialogBox2.SetActive(false);
-                advise2.SetActive(false);
+                gameOverGameObjectTitle.SetActive(false);
             }
         }
-            
         else
         {
             title.SetActive(false);
@@ -192,7 +220,17 @@ public class UIManager : MonoBehaviour
             dialogBox2.SetActive(false);
             advise2.SetActive(false);
         }
+        //     gameOverAnimator.SetBool("isTitle",true);
+        //     Debug.Log("title game over");
+        //     // StartCoroutine(TimeStopGameOverTitle());
+        //     // if(securityContinue4)
+        //     // {
+        //     //     gameOverAnimator.SetBool("isTitle",false);
+        //     //     gameOverTitle.SetActive(false);
+        //     // }
+        // }
     }
+
     
             
         
@@ -266,4 +304,10 @@ public class UIManager : MonoBehaviour
         securityContinue3 = true;
 
     }    
+    IEnumerator TimeStopGameOverTitle()
+    {
+        yield return new WaitForSeconds(timeStopTitle);
+        securityContinue4 = true;
+
+    }
 }

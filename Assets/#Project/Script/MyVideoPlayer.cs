@@ -30,8 +30,8 @@ public class MyVideoPlayer : MonoBehaviour
         // mainCamera = GameObject.Find("Main Camera");
         videoPlayer = GetComponent<VideoPlayer>();
         // zeroPlayer = GetComponent<PlayerZeroTransformation>();
-        dialogBox2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        dialogBox2 = GameObject.FindGameObjectWithTag("UICanvas2").GetComponent<UI_Assistant2>();
     }
     void Start()
     {

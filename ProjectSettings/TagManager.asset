@@ -31,6 +31,8 @@ TagManager:
   - leftMouse
   - televisionAudio
   - World
+  - GameOverTitle
+  - SphereMenuZero
   layers:
   - Default
   - TransparentFX

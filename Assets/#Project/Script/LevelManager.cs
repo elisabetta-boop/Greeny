@@ -8,6 +8,7 @@ using UnityEngine.AI;
 using Cinemachine;
 public class LevelManager : MonoBehaviour
 {
+    public SphereMenuZeroBehaviour sphereMenuZeroBehaviour;
     private int row;
     private int col;
     public int CubeRow;
@@ -86,6 +87,7 @@ public class LevelManager : MonoBehaviour
                 playerCams[i].Follow = player.transform;
             }
         }
+        sphereMenuZeroBehaviour= GameObject.FindGameObjectWithTag("SphereMenuZero").GetComponent<SphereMenuZeroBehaviour>();
 
     }
     void Update()
@@ -145,13 +147,14 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator PassToWin()
     {
+        sphereMenuZeroBehaviour.okAnimSphere = false;
         yield return new WaitForSeconds(timeToWin);
     }
     public void Win()
     {
-
         //Debug.Log("winner");
         whenPlayerWins?.Invoke();
+
     }
 
 
