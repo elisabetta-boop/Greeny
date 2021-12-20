@@ -138,7 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 5
   controller: {fileID: 157808263449216651}
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTransforming: 0
-  waitTransformation: 37
+  waitTransformation: 33
   PlayerZeroGreeny: {fileID: 157808263449216662, guid: b9e3488869e587944af4cccb4038f39b, type: 3}
   zeroPlayerTransform: {fileID: 157808263449216655}
   menuGame_Manager: {fileID: 0}
@@ -184,6 +183,8 @@ MonoBehaviour:
   radius: 0
   power: 0
   explosionGameObject: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
+  panelAdios: {fileID: 0}
+  exploded: 0
 --- !u!1 &295221588800443509
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,7 +107,7 @@ public class LevelManager : MonoBehaviour
             //Debug.Log("one for the win");
         }
         Debug.Log("how many green tiles: " + greenColored.Count);
-        if (greenColored.Count == cubicWorldi || greenColored.Count == (cubicWorldi-1))
+        if (greenColored.Count == cubicWorldi || greenColored.Count == (cubicWorldi-1)|| greenColored.Count == (cubicWorldi-2)|| greenColored.Count == (cubicWorldi-3)|| greenColored.Count == (cubicWorldi-4) || greenColored.Count == (cubicWorldi-5))
         {
             Debug.Log("winnnnnnnnn");
             StartCoroutine(PassToWin());

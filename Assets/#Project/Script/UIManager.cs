@@ -15,6 +15,10 @@ public class UIManager : MonoBehaviour
     //public GameObject buttonMenu;
     public GameObject buttonContinue;
     public GameObject buttonStop;
+    public GameObject panelAdviseMenuTwo;
+    public PanelAdios panelAdios;
+    public GameObject panelGameObjectGrizzys;
+    public PanelAdios panelAdiosGrizzys;
     public ContinueButton continueButton;
     public StopButton stopButton;
     public Exit exit;
@@ -25,6 +29,9 @@ public class UIManager : MonoBehaviour
     public PlayTheIntro playTheIntro;
     public TelevisionController televisionController;
     public MenuGame_Manager menuGame_Manager;
+    public GameObject PanelTuto;
+    public PanelAdios panelAdios2;
+    public Explosion explosionGreeny;
 
     private float currentTime = 0;
     public float startMessage = 3.0f;
@@ -34,7 +41,7 @@ public class UIManager : MonoBehaviour
     public float timeToAdvise= 4.1f;
     public float timeBlinkAdvise = 2.0f;
     public float timeToStopDialogBox = 2.0f;
-    public float timeVideoStartDialogBox2 = 5.0f;
+    public float timeVideoStartDialogBox2 = 2.0f;
     public float timeVideoStartDialogBox22 = 3.0f;
     public float timeToStopDialogBox2 = 10.0f;
     public float timeStartTitle = 5.0f;
@@ -42,6 +49,7 @@ public class UIManager : MonoBehaviour
     public float timerAdviseBox = 3.0f;
     public float timeToStartContinueSafe = 20.0f;
     public float timeToStartContinueSafeZero = 0.0f;
+    public float timeStopPanelTuto =2.0f;
     public bool okDialogBox2= false;
     public bool bastaAdvise = false;
     public bool isTitled = false;
@@ -55,6 +63,7 @@ public class UIManager : MonoBehaviour
     public bool securityContinue2 = false;
     public bool securityContinue3 = false;
     public bool securityContinue4 = false;
+    public bool isOkPanelTuto =false;
 
     public Animator gameOverAnimator;
     
@@ -80,6 +89,7 @@ public class UIManager : MonoBehaviour
             //buttonMenu = GameObject.FindGameObjectWithTag("ButtonMenu");
             playTheIntro = GameObject.FindGameObjectWithTag("Play").GetComponent<PlayTheIntro>();
             continueButton = GameObject.FindGameObjectWithTag("Continue").GetComponent<ContinueButton>();
+            
             isTelevisionFalling = false;
             securityContinue1 = false;
             securityContinue2 = false;
@@ -94,12 +104,24 @@ public class UIManager : MonoBehaviour
             dialogBox2.SetActive(false);
             advise2.SetActive(false);
             buttonContinue.SetActive(false);
+            PanelTuto.SetActive(false);
+        }
+        if(menuGame_Manager.levelNow == 1)
+        {
+            panelGameObjectGrizzys.SetActive(true);
+            panelAdiosGrizzys = GameObject.FindGameObjectWithTag("PanelAdviseMenuZero").GetComponent<PanelAdios>();
+        }
+        if(menuGame_Manager.levelNow == 2)
+        {
+            panelAdviseMenuTwo.SetActive(true);
+            panelAdios = GameObject.FindGameObjectWithTag("PanelGrizzys").GetComponent<PanelAdios>();
         }
         if(menuGame_Manager.levelNow == 10)
         {
             gameOverTitle = GameObject.FindGameObjectWithTag("GameOverTitle").GetComponent<GameOverTitle>();
             isGameOver = true;
         }
+
     }
 
     // Update is called once per frame
@@ -109,21 +131,26 @@ public class UIManager : MonoBehaviour
         {
             if(playTheIntro.isPlaytheIntro)// && isTelevisionFalling != null)
             {
+                //explosionGreeny = GameObject.FindGameObjectWithTag("PlayerZero").GetComponent<Explosion>();
                 MenuZeroConditionsIntro();
+
+                if(continueButton.isContinue)
+                {
+                    dialogBox.SetActive(false);
+                    dialogBox2.SetActive(true);
+                    //MenuZeroContinueConditions();
+                    StartCoroutine(StartStartDialogBox2());
+                    StartCoroutine(StartTitle());
+                }
             }
 
-            else if(continueButton.isContinue)
-            {
-                dialogBox.SetActive(false);
-
-                MenuZeroContinueConditions();
-            }
         
             if(securityContinue1)
             {
                 Debug.Log("security continue 1 "+securityContinue1);
-                advise2.SetActive(true); 
-                dialogBox2.SetActive(true);
+                advise2.SetActive(true);
+                StartCoroutine(BlinkAdvise2()); 
+                //dialogBox2.SetActive(true);
                 //isDialogBox2 = true;
                 
                 StartCoroutine(StopTheDialogBox2());
@@ -139,17 +166,21 @@ public class UIManager : MonoBehaviour
                 explosion = GameObject.FindGameObjectWithTag("Title").GetComponent<Explosion>();
                 explosion.Explode();
             }
-                    
+            else if(isTitled)
+            {
+                StartCoroutine(TimeStopTitle());
+            }     
             else if(bastaAdvise)
             {
                 advise2.SetActive(false);
+                //PanelTuto.SetActive(true);
             }   
         
             else if(securityContinue3)
             {
                 title.SetActive(false);
                 title.GetComponent<Animator>().SetBool("isTitle", false);
-                isTitled = false;
+                //isTitled = false;
             }
                         
                     
@@ -160,45 +191,64 @@ public class UIManager : MonoBehaviour
                 advise.SetActive(false);
                 dialogBox2.SetActive(false);
                 advise2.SetActive(false);
+                //PanelTuto.SetActive(false);
             }
-    
+            else if(panelAdios2.isPanelOk && isTitled)
+            {
+                PanelTuto.SetActive(true);
+            }
+
+        
+            else
+            {
+                title.SetActive(false);
+                //dialogBox.SetActive(false);
+                advise.SetActive(false);
+                dialogBox2.SetActive(false);
+                advise2.SetActive(false);
+                PanelTuto.SetActive(false);
+            }
+        }
+    if(menuGame_Manager.levelNow == 1)
+    {
+        if(!panelAdiosGrizzys.isPanelOk)
+        {
+            panelGameObjectGrizzys.SetActive(true);
+        }
+        // else{
+        //     panelGameObjectGrizzys.SetActive(false);
+        // }
+        
+        
+    }
+    if(menuGame_Manager.levelNow == 2)
+    {
+        if(!panelAdios.isPanelOk)
+        {
+            panelAdviseMenuTwo.SetActive(true);
+        }
+        
+        
+    }
                
 
         
-        if(menuGame_Manager.levelNow == 10)
+    if(menuGame_Manager.levelNow == 10)
+    {
+        if(gameOverTitle.okAnim)
         {
-                
-
-            if(gameOverTitle.okAnim)
-            {
-                Debug.Log("ok stop game over anim");
-                StartCoroutine(TimeStopGameOverTitle());
-                
-            }
-            if(securityContinue4)
-            {
-                gameOverGameObjectTitle.SetActive(false);
-            }
-            }
-        else
-        {
-            title.SetActive(false);
-            //dialogBox.SetActive(false);
-            advise.SetActive(false);
-            dialogBox2.SetActive(false);
-            advise2.SetActive(false);
+            Debug.Log("ok stop game over anim");
+            StartCoroutine(TimeStopGameOverTitle());
+            
         }
-        //     gameOverAnimator.SetBool("isTitle",true);
-        //     Debug.Log("title game over");
-        //     // StartCoroutine(TimeStopGameOverTitle());
-        //     // if(securityContinue4)
-        //     // {
-        //     //     gameOverAnimator.SetBool("isTitle",false);
-        //     //     gameOverTitle.SetActive(false);
-        //     // }
-        // }
+        if(securityContinue4)
+        {
+            gameOverGameObjectTitle.SetActive(false);
+        }
+        }
+        
     }
-    }
+    
     public void MenuZeroConditionsIntro()
     {
         isTelevisionFalling = true;
@@ -211,14 +261,9 @@ public class UIManager : MonoBehaviour
         {
             dialogBox.SetActive(true);
             buttonContinue.SetActive(true);
-            //ici television launch
+     
             
-            // if(myVideoPlayer.TelevisionAnimation)
-            // {
-            //     dialogBox.SetActive(false);
-            //     advise.SetActive(false);
-            //     //buttonMenu.SetActive(false);
-            // }
+        
         }
         
         else if(currentTime>= timeToAdvise)
@@ -235,26 +280,16 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    public void MenuZeroContinueConditions()
-    {
-        StartCoroutine(StartStartDialogBox2());
-        StartCoroutine(StartTitle());
+    // public void MenuZeroContinueConditions()
+    // {
+    //     //dialogBox2.SetActive(true);
+    //     StartCoroutine(StartStartDialogBox2());
+    //     StartCoroutine(StartTitle());
         
-        //buttonContinue.SetActive(false);  
+    //     //buttonContinue.SetActive(false);  
         
-    }
-    
-            
-        
-        
-    
-    
-
-    
-
-
-    
-   
+    // }
+  
     IEnumerator BlinkAdvise()
     {
         yield return new WaitForSeconds(timeBlinkAdvise);
@@ -267,6 +302,18 @@ public class UIManager : MonoBehaviour
         advise.SetActive(true);
         okblinking = true;  
     }
+    IEnumerator BlinkAdvise2()
+    {
+        yield return new WaitForSeconds(timeBlinkAdvise);
+        advise2.SetActive(false);
+        yield return new WaitForSeconds(timeBlinkAdvise);
+        advise2.SetActive(true);
+        yield return new WaitForSeconds(timeBlinkAdvise);
+        advise2.SetActive(false);
+        yield return new WaitForSeconds(timeBlinkAdvise);
+        advise2.SetActive(true);
+        //okblinking = true;  
+    }
     public IEnumerator StartStartDialogBox2()
     {
         yield return new WaitForSeconds(timeVideoStartDialogBox2);
@@ -275,7 +322,7 @@ public class UIManager : MonoBehaviour
         bastaAdvise = true;
 
         // advise2.SetActive(true); 
-        // dialogBox2.SetActive(true);
+        //dialogBox2.SetActive(true);
         //yield return new WaitForSeconds(timeVideoStartDialogBox22);
         //isDialogBox=true;
         //monMax+=1;
@@ -321,5 +368,11 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(timeStopTitle);
         securityContinue4 = true;
 
+    }
+    IEnumerator StopPanelTuto()
+    {
+        yield return new WaitForSeconds(timeStopPanelTuto);
+
+        isOkPanelTuto= true;
     }
 }
