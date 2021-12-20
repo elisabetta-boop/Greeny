@@ -98,6 +98,7 @@ public class UIManager : MonoBehaviour
         if(menuGame_Manager.levelNow == 10)
         {
             gameOverTitle = GameObject.FindGameObjectWithTag("GameOverTitle").GetComponent<GameOverTitle>();
+            isGameOver = true;
         }
     }
 
@@ -167,7 +168,7 @@ public class UIManager : MonoBehaviour
         if(menuGame_Manager.levelNow == 10)
         {
                 
-            isGameOver = true;
+
             if(gameOverTitle.okAnim)
             {
                 Debug.Log("ok stop game over anim");

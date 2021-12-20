@@ -1899,6 +1899,38 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1316630300}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 56237367}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Scene_Changer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: ggameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967811299707869271, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
+      propertyPath: whenDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8967811299707869288, guid: 7002e1a8c9dc2274aa6578bbb660b9c5, type: 3}
       propertyPath: m_RootOrder
       value: 22

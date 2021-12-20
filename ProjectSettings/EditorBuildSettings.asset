@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuTwo.unity
     guid: 4bdd512fe56a984408fa1504f3251f82
   - enabled: 0
-    path: Assets/Scenes/MenuTwobad.unity
+    path: 
     guid: 5a20ff934b4f77c4c8385628ffcb04ce
   - enabled: 1
     path: Assets/Scenes/Level-1.unity
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/ggameOver.unity
+    guid: 67b4ba2d899eb044888454f71c619271
   m_configObjects: {}
