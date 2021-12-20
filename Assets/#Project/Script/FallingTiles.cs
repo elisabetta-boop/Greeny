@@ -48,7 +48,7 @@ public class FallingTiles : MonoBehaviour
         
             return adjustedFallingTile;
         }
-        Vector3 fallingTilePosition = new Vector3(GetRandomPositionX(),5,GetRandomPositionZ());
+        Vector3 fallingTilePosition = new Vector3(GetRandomPositionX(),10,GetRandomPositionZ());
         Debug.Log(fallingTilePosition+ " falling tile position");
         // Vector3 fallingTilePosition = new Vector3((Random.Range(0,levelMananager.miao)),5,(Random.Range(0,levelMananager.bau)));
         // Debug.Log(fallingTilePosition+ " falling tile position");

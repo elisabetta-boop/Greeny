@@ -1490,6 +1490,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+--- !u!114 &925567296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6288849467109380624, guid: 718e956ad52c4664e9d1f8e7cd4f646c, type: 3}
+  m_PrefabInstance: {fileID: 925567295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c2216e9597b2649a07a8a7e80f9bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1266822069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2869,6 +2880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
   lt: {fileID: 1770627836}
+  duration: 5
 --- !u!1 &1771028152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,7 +2957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ba4c337ea493547acacbdd93c16de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sphereMenuZeroBehaviour: {fileID: 0}
+  sphereMenuZeroBehaviour: {fileID: 925567296}
+  gameManager: {fileID: 664625046}
   CubeRow: 10
   CubeCol: 10
   gapRow: 3

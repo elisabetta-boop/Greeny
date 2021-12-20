@@ -6,6 +6,7 @@ public class LightGame : MonoBehaviour
 {
     public Timer timer;
     public Light lt;
+    public float duration = 5;
     // double augmentation = 0.02;
     void Start() {
         lt = GetComponent<Light>();
@@ -18,7 +19,7 @@ public class LightGame : MonoBehaviour
     }
     
     IEnumerator FadeIn() {
-        float duration = 5.0f;//time you want it to run
+        duration = 5.0f;//time you want it to run
         float interval = 0.1f;//interval time between iterations of while loop
         lt.intensity = 0.0f;
         while (duration >= 0.0f) {

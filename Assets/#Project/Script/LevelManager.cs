@@ -9,6 +9,7 @@ using Cinemachine;
 public class LevelManager : MonoBehaviour
 {
     public SphereMenuZeroBehaviour sphereMenuZeroBehaviour;
+    public GameManager gameManager;
     private int row;
     private int col;
     public int CubeRow;
@@ -90,6 +91,7 @@ public class LevelManager : MonoBehaviour
             }
         }
         sphereMenuZeroBehaviour= GameObject.FindGameObjectWithTag("SphereMenuZero").GetComponent<SphereMenuZeroBehaviour>();
+        gameManager= GameObject.FindGameObjectWithTag("MenuGame").GetComponent<GameManager>();
 
     }
     void Update()
@@ -107,10 +109,24 @@ public class LevelManager : MonoBehaviour
             //Debug.Log("one for the win");
         }
         Debug.Log("how many green tiles: " + greenColored.Count);
-        if (greenColored.Count == cubicWorldi || greenColored.Count == (cubicWorldi-1)|| greenColored.Count == (cubicWorldi-2)|| greenColored.Count == (cubicWorldi-3)|| greenColored.Count == (cubicWorldi-4) || greenColored.Count == (cubicWorldi-5))
+        if(gameManager.levelNow==1)
         {
-            Debug.Log("winnnnnnnnn");
-            StartCoroutine(PassToWin());
+            
+            if (greenColored.Count == cubicWorldi || greenColored.Count == (cubicWorldi-1)|| greenColored.Count == (cubicWorldi-2)) 
+            {
+                Debug.Log("winnnnnnnnn");
+                StartCoroutine(PassToWin());
+            }
+            
+        }
+        else if(gameManager.levelNow == 2 || gameManager.levelNow == 3 )
+        {
+
+            if (greenColored.Count == cubicWorldi || greenColored.Count == (cubicWorldi-1)|| greenColored.Count == (cubicWorldi-2)|| greenColored.Count == (cubicWorldi-3)|| greenColored.Count == (cubicWorldi-4) || greenColored.Count == (cubicWorldi-5))
+            {
+                Debug.Log("winnnnnnnnn");
+                StartCoroutine(PassToWin());
+            }
         }
     }
     public void changeColorTile(int id)
