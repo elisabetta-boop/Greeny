@@ -2803,6 +2803,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1244145798}
   parallaxEffect: 0.8
+--- !u!114 &1484476497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5825634423538302242, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
+  m_PrefabInstance: {fileID: 5825634424920086880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d579dbdf7d9914bbb1bac7dfbd34c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1528433169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,6 +3008,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1244145798}
   parallaxEffect: 0.7
+--- !u!1 &1627053761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5825634423684242004, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
+  m_PrefabInstance: {fileID: 5825634424920086880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1627053763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627053761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4e335467bf57e4c9a541d4ddbfb73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStop: 0
 --- !u!1 &1707510625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4041,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 1484476497}
+    - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
       propertyPath: title
       value: 
       objectReference: {fileID: 321707274}
@@ -4032,9 +4065,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 321707279}
     - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
+      propertyPath: buttonStop
+      value: 
+      objectReference: {fileID: 1627053761}
+    - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
       propertyPath: dialogBox2
       value: 
       objectReference: {fileID: 2109696127}
+    - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
+      propertyPath: stopButton
+      value: 
+      objectReference: {fileID: 1627053763}
     - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
       propertyPath: uiAssistant
       value: 
@@ -4059,6 +4100,10 @@ PrefabInstance:
       propertyPath: continueButton
       value: 
       objectReference: {fileID: 374339514}
+    - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
+      propertyPath: menuGame_Manager
+      value: 
+      objectReference: {fileID: 1707510626}
     - target: {fileID: 1569038802959577705, guid: 2d5bdc8582609df4d8b290455a433e2f, type: 3}
       propertyPath: televisionController
       value: 
@@ -4332,6 +4377,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 195136389}
+    - target: {fileID: 5825634423684242007, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1627053763}
+    - target: {fileID: 5825634423684242007, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopStory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825634423684242007, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StopButton, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5825634424656238065, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4428,7 +4485,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5825634423684242006, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d50616f1834c4d40bed2d6c4530c189, type: 3}
 --- !u!1001 &7317701213081981043
 PrefabInstance:
